@@ -18,7 +18,7 @@
       <img src="/images/avatar_default.gif" class="avatar" />
     </div>
     <span style="font-size:18pt; position: relative; top: 4px;left: -2px"><?=__('Welcome !')?></span><br />
-    <span style="position: relative;top: 3px"><?=__('In order to use fully the %name%, you have to login first.', array("%name%" => sfConfig::get("app_name")))?></span>
+    <span style="position: relative;top: 3px"><?=__('In order to use fully the %name%, you have to login first.', array("%name%" => sfConfig::get("app_name", "ZenTracker CMS")))?></span>
     <hr class="clrfx" />
     <?php endif; ?>
   </a>
