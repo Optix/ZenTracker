@@ -1,0 +1,18 @@
+#####
+# OS X temporary files that should never be committed
+
+.DS_Store
+*.swp
+*.lock
+profile
+
+
+/cache/*
+/log/*
+/web/uploads/avatars/50x50/*
+/web/uploads/avatars/32x32/*
+/web/uploads/avatars/16x16/*
+/web/uploads/images/original/*
+/web/uploads/images/thumbs/*
+/web/uploads/nfo/*
+/web/uploads/torrents/*

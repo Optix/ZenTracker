@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="fr" datatype="plaintext" original="messages" date="2012-02-07T17:23:00Z" product-name="messages">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>Bold</source>
+        <target>Gras</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Italic</source>
+        <target>Italique</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Underline</source>
+        <target>Souligne</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Font size</source>
+        <target>Taille</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Tiny</source>
+        <target>Minuscule</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Very small</source>
+        <target>Très petit</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Small</source>
+        <target>Petit</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Medium</source>
+        <target>Moyen</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>Large</source>
+        <target>Grand</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>Very large</source>
+        <target>Très grand</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>Huge !</source>
+        <target>Énorme !</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>Picture</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>Link</source>
+        <target>Lien</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>Quote</source>
+        <target>Citation</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <source>Color</source>
+        <target>Couleur</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>Black</source>
+        <target>Noir</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>Red</source>
+        <target>Rouge</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>Yellow</source>
+        <target>Jaune</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <source>Pink</source>
+        <target>Rose</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>Green</source>
+        <target>Vert</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>Orange</source>
+        <target>Orange</target>
+      </trans-unit>
+      <trans-unit id="22">
+        <source>Purple</source>
+        <target>Violet</target>
+      </trans-unit>
+      <trans-unit id="23">
+        <source>Blue</source>
+        <target>Bleu</target>
+      </trans-unit>
+      <trans-unit id="24">
+        <source>Beige</source>
+        <target>Beige</target>
+      </trans-unit>
+      <trans-unit id="25">
+        <source>Brown</source>
+        <target>Brun</target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source>Teal</source>
+        <target>Turquoise</target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source>Maroon</source>
+        <target>Marron</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>Lime green</source>
+        <target>Vert clair</target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source>Music</source>
+        <target>Musique</target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source>Video</source>
+        <target>Vidéo</target>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>edited</source>
+        <target>édité</target>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>Edit</source>
+        <target>Éditer</target>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>Delete</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="34">
+        <source>Write a new comment</source>
+        <target>Écrire un nouveau commentaire</target>
+      </trans-unit>
+      <trans-unit id="35">
+        <source>Javascript must be enabled !</source>
+        <target>Le Javascript doit être activé !</target>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>Home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="37">
+        <source>Anonymous</source>
+        <target>Anonyme</target>
+      </trans-unit>
+      <trans-unit id="38">
+        <source>Your avatar has been updated sucessfully.</source>
+        <target>Votre avatar a bien été changé.</target>
+      </trans-unit>
+      <trans-unit id="39">
+        <source>Your password is too short (%i% characters minimum).</source>
+        <target>Votre mot de passe est trop court (%i% caractères minimum).</target>
+      </trans-unit>
+      <trans-unit id="40">
+        <source>Your password has been updated sucessfully !</source>
+        <target>Votre mot de passe a bien été changé.</target>
+      </trans-unit>
+      <trans-unit id="41">
+        <source>A password doesn't match with the other one.</source>
+        <target>L'un des mots de passe ne correspond pas.</target>
+      </trans-unit>
+      <trans-unit id="42">
+        <source>Your e-mail address is invalid.</source>
+        <target>Votre adresse e-mail est invalide.</target>
+      </trans-unit>
+      <trans-unit id="43">
+        <source>Your e-mail address has been updated successfully.</source>
+        <target>Votre adresse e-mail a bien été changée.</target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>Your layout has been changed successfully.</source>
+        <target>Le design a bien été changé.</target>
+      </trans-unit>
+      <trans-unit id="45">
+        <source>Your IP address has been deleted.</source>
+        <target>Votre adresse IP a été supprimée.</target>
+      </trans-unit>
+      <trans-unit id="46">
+        <source>Invalid IP address.</source>
+        <target>Adresse IP invalide.</target>
+      </trans-unit>
+      <trans-unit id="47">
+        <source>Your IP address has been added !</source>
+        <target>Votre adresse IP a bien été ajoutée !</target>
+      </trans-unit>
+      <trans-unit id="48">
+        <source>Internal error.</source>
+        <target>Erreur interne.</target>
+      </trans-unit>
+      <trans-unit id="49">
+        <source>You are now disconnected. See you soon !</source>
+        <target>Vous êtes maintenant déconnecté. A bientôt !</target>
+      </trans-unit>
+      <trans-unit id="50">
+        <source>Your passwords don't match.</source>
+        <target>Vos mots de passe ne correspondent.</target>
+      </trans-unit>
+      <trans-unit id="51">
+        <source>The username contains illegal characters. Keep it simple.</source>
+        <target>Votre nom d'utilisateur contient des caractères invalides. Faites simple.</target>
+      </trans-unit>
+      <trans-unit id="52">
+        <source>The username seems a little bit too short, don't you think ?</source>
+        <target>Votre nom d'utilisateur me semble trop court, vous ne trouvez pas ?</target>
+      </trans-unit>
+      <trans-unit id="53">
+        <source>This username is already in use.</source>
+        <target>Ce nom d'utilisateur est déjà utilisé.</target>
+      </trans-unit>
+      <trans-unit id="54">
+        <source>This e-mail address is already in use.</source>
+        <target>Cette adresse e-mail est déjà enregistrée.</target>
+      </trans-unit>
+      <trans-unit id="55">
+        <source>account validation</source>
+        <target>validation de compte</target>
+      </trans-unit>
+      <trans-unit id="56">
+        <source>Your account has been created. A confirmation mail has just been sent in order to activate it.</source>
+        <target>Votre compte a bien été créé ! Un email de confirmation vient juste de partir pour l'activation.</target>
+      </trans-unit>
+      <trans-unit id="57">
+        <source>Hey ! Your account is already activated, you don't remember ?</source>
+        <target>Hé ! Votre compte est déjà activé, vous ne vous souvenez plus ?</target>
+      </trans-unit>
+      <trans-unit id="58">
+        <source>I'm sorry, but your validation key is not correct.</source>
+        <target>Je regrette, mais votre clé d'activation n'est pas correcte.</target>
+      </trans-unit>
+      <trans-unit id="59">
+        <source>Account validated ! Log you in and let the show begin !</source>
+        <target>Compte validé ! Connectez-vous et c'est parti !</target>
+      </trans-unit>
+      <trans-unit id="60">
+        <source>Hum it's embarrassing... you're already connected.</source>
+        <target>Euh, vous êtes déjà connecté en fait.</target>
+      </trans-unit>
+      <trans-unit id="61">
+        <source>There's no %s% here.</source>
+        <target>Il n'y a pas de %s% ici.</target>
+      </trans-unit>
+      <trans-unit id="62">
+        <source>Your account is still waiting for validation.</source>
+        <target>Votre compte est encore en instance de validation.</target>
+      </trans-unit>
+      <trans-unit id="63">
+        <source>Your account has been moved to the hell. We're praying for your soul.</source>
+        <target>Votre compte a été mis aux enfers. Nous prions pour votre âme.</target>
+      </trans-unit>
+      <trans-unit id="64">
+        <source>Happy to see you %s% !</source>
+        <target>Content de vous revoir, %s% !</target>
+      </trans-unit>
+      <trans-unit id="65">
+        <source>Incorrect password !</source>
+        <target>Mot de passe incorrect !</target>
+      </trans-unit>
+      <trans-unit id="66">
+        <source>Modify my avatar</source>
+        <target>Modifier mon avatar</target>
+      </trans-unit>
+      <trans-unit id="67">
+        <source>Manage my IP addresses</source>
+        <target>Gérer mes adresses IP</target>
+      </trans-unit>
+      <trans-unit id="68">
+        <source>Change my layout</source>
+        <target>Changer le design</target>
+      </trans-unit>
+      <trans-unit id="69">
+        <source>Change my password</source>
+        <target>Changer mon mot de passe</target>
+      </trans-unit>
+      <trans-unit id="70">
+        <source>Change my e-mail address</source>
+        <target>Changer mon adresse e-mail</target>
+      </trans-unit>
+      <trans-unit id="71">
+        <source>Status</source>
+        <target>Statut</target>
+      </trans-unit>
+      <trans-unit id="72">
+        <source>Administrator</source>
+        <target>Administrateur</target>
+      </trans-unit>
+      <trans-unit id="73">
+        <source>Moderator</source>
+        <target>Modérateur</target>
+      </trans-unit>
+      <trans-unit id="74">
+        <source>Member</source>
+        <target>Membre</target>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>Banned</source>
+        <target>Banni</target>
+      </trans-unit>
+      <trans-unit id="76">
+        <source>Pending validation</source>
+        <target>En validation</target>
+      </trans-unit>
+      <trans-unit id="77">
+        <source>Last visit</source>
+        <target>Dernière visite</target>
+      </trans-unit>
+      <trans-unit id="78">
+        <source>Never connected</source>
+        <target>Jamais connecté</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>Current password :</source>
+        <target>Mot de passe actuel :</target>
+      </trans-unit>
+      <trans-unit id="80">
+        <source>New password :</source>
+        <target>Nouveau mot de passe :</target>
+      </trans-unit>
+      <trans-unit id="81">
+        <source>Retype it again :</source>
+        <target>Retapez-le à nouveau :</target>
+      </trans-unit>
+      <trans-unit id="82">
+        <source>Current e-mail address :</source>
+        <target>Adresse e-mail actuelle :</target>
+      </trans-unit>
+      <trans-unit id="83">
+        <source>New e-mail address :</source>
+        <target>Nouvelle adresse e-mail :</target>
+      </trans-unit>
+      <trans-unit id="84">
+        <source>Add a new avatar</source>
+        <target>Ajouter un nouvel avatar</target>
+      </trans-unit>
+      <trans-unit id="85">
+        <source>The community identifies easily a member with his avatar, a small picture representing you. %name% enables you to send an image stored on your computer very simply. The picture will be converted with the good size, automatically.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="86">
+        <source>Send</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="87">
+        <source>Your topic has been created sucessfully.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="88">
+        <source>Your reply has been posted sucessfully.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="89">
+        <source>This topic has been renamed.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="90">
+        <source>No one can reply to this topic now.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="91">
+        <source>This topic is now open for new replies.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="92">
+        <source>Your topic is now clearly visible.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="93">
+        <source>Your topic will sink in the depths of the forum.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="94">
+        <source>Last posts</source>
+        <target>Dernières réponses</target>
+      </trans-unit>
+      <trans-unit id="95">
+        <source>Now</source>
+        <target>Maintenant</target>
+      </trans-unit>
+      <trans-unit id="96">
+        <source>Send my reply</source>
+        <target>Envoyer ma réponse</target>
+      </trans-unit>
+      <trans-unit id="97">
+        <source>Locked topic</source>
+        <target>Sujet verrouillé</target>
+      </trans-unit>
+      <trans-unit id="98">
+        <source>Follow</source>
+        <target>Suivre</target>
+      </trans-unit>
+      <trans-unit id="99">
+        <source>Important</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="100">
+        <source>Normal</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="101">
+        <source>Lock</source>
+        <target>Verrouiller</target>
+      </trans-unit>
+      <trans-unit id="102">
+        <source>Unlock</source>
+        <target>Déverrouiller</target>
+      </trans-unit>
+      <trans-unit id="103">
+        <source>Rename this topic</source>
+        <target>Renommer le sujet</target>
+      </trans-unit>
+      <trans-unit id="104">
+        <source>Form</source>
+        <target>Formulaire</target>
+      </trans-unit>
+      <trans-unit id="105">
+        <source>Add a news</source>
+        <target>Ajouter une news</target>
+      </trans-unit>
+      <trans-unit id="106">
+        <source>Written by</source>
+        <target>Écrit(e) par</target>
+      </trans-unit>
+      <trans-unit id="107">
+        <source>Title of the poll</source>
+        <target>Titre du sondage</target>
+      </trans-unit>
+      <trans-unit id="108">
+        <source>Reply at this poll</source>
+        <target>Répondre à ce sondage</target>
+      </trans-unit>
+      <trans-unit id="109">
+        <source>Validate my vote</source>
+        <target>Valider mon vote</target>
+      </trans-unit>
+      <trans-unit id="110">
+        <source>%i% voters</source>
+        <target>%i% votants</target>
+      </trans-unit>
+      <trans-unit id="111">
+        <source>posted a new DDL link !</source>
+        <target>vient de poster un nouveau DDL !</target>
+      </trans-unit>
+      <trans-unit id="112">
+        <source>Congrats' ! Your file is now online.</source>
+        <target>Bravo ! Votre fichier est désormais en ligne !</target>
+      </trans-unit>
+      <trans-unit id="113">
+        <source>This torrent file is not set to private mode.</source>
+        <target>Ce torrent n'est pas en mode privé.</target>
+      </trans-unit>
+      <trans-unit id="114">
+        <source>The announce URL is not correct.</source>
+        <target>L'URL d'announce n'est pas correct.</target>
+      </trans-unit>
+      <trans-unit id="115">
+        <source>This torrent is already posted.</source>
+        <target>Ce torrent est déjà en ligne.</target>
+      </trans-unit>
+      <trans-unit id="116">
+        <source>Sorry, I can't save your file.</source>
+        <target>Désolé, je ne peux pas enregistrer votre fichier.</target>
+      </trans-unit>
+      <trans-unit id="117">
+        <source>posted a new torrent file !</source>
+        <target>vient de poster un nouveau torrent !</target>
+      </trans-unit>
+      <trans-unit id="118">
+        <source>Description</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="119">
+        <source>General information</source>
+        <target>Informations générales</target>
+      </trans-unit>
+      <trans-unit id="120">
+        <source>Download</source>
+        <target>Télécharger</target>
+      </trans-unit>
+      <trans-unit id="121">
+        <source>Hash</source>
+        <target>Hash</target>
+      </trans-unit>
+      <trans-unit id="122">
+        <source>Size</source>
+        <target>Taille</target>
+      </trans-unit>
+      <trans-unit id="123">
+        <source>Date</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="124">
+        <source>Votes</source>
+        <target>Votes</target>
+      </trans-unit>
+      <trans-unit id="125">
+        <source>Completed</source>
+        <target>Complété</target>
+      </trans-unit>
+      <trans-unit id="126">
+        <source>%i% times</source>
+        <target>%i% fois</target>
+      </trans-unit>
+      <trans-unit id="127">
+        <source>with</source>
+        <target>avec</target>
+      </trans-unit>
+      <trans-unit id="128">
+        <source>Ask reseed</source>
+        <target>Demander le reseed</target>
+      </trans-unit>
+      <trans-unit id="129">
+        <source>Save</source>
+        <target>Sauvegarder</target>
+      </trans-unit>
+      <trans-unit id="130">
+        <source>Files</source>
+        <target>Fichiers</target>
+      </trans-unit>
+      <trans-unit id="131">
+        <source>Peers</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="132">
+        <source>Comments</source>
+        <target>Commentaires</target>
+      </trans-unit>
+      <trans-unit id="133">
+        <source>This action will debite immediatly your ratio by the size of this upload.</source>
+        <target>Cette action va tout de suite débiter votre ratio de la taille de cet upload.</target>
+      </trans-unit>
+      <trans-unit id="134">
+        <source>The shout</source>
+        <target>La shout</target>
+      </trans-unit>
+      <trans-unit id="135">
+        <source>They liked</source>
+        <target>Ils ont aimé</target>
+      </trans-unit>
+      <trans-unit id="136">
+        <source>No one liked this shout. Patience.</source>
+        <target>Personne n'aime cette shout. Patience.</target>
+      </trans-unit>
+      <trans-unit id="137">
+        <source>I like</source>
+        <target>J'aime</target>
+      </trans-unit>
+      <trans-unit id="138">
+        <source>Comment</source>
+        <target>Commenter</target>
+      </trans-unit>
+      <trans-unit id="139">
+        <source>Welcome !</source>
+        <target>Bienvenue !</target>
+      </trans-unit>
+      <trans-unit id="140">
+        <source>In order to use fully the %name%, you have to login first.</source>
+        <target>Pour profiter pleinement de %name%, vous devez d'abord vous connecter.</target>
+      </trans-unit>
+      <trans-unit id="141">
+        <source>Registration</source>
+        <target>Inscription</target>
+      </trans-unit>
+      <trans-unit id="142">
+        <source>Your username :</source>
+        <target>Votre nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="143">
+        <source>Your password :</source>
+        <target>Votre mot de passe :</target>
+      </trans-unit>
+      <trans-unit id="144">
+        <source>Your e-mail address :</source>
+        <target>Votre adresse e-mail :</target>
+      </trans-unit>
+      <trans-unit id="145">
+        <source>Register me</source>
+        <target>M'inscrire</target>
+      </trans-unit>
+      <trans-unit id="146">
+        <source>Login</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="147">
+        <source>If you own a %name% account, log you in now in order to benefit from the whole of the functionalities !</source>
+        <target>Si vous avez un compte %name%, connectez-vous maintenant pour profiter de toutes les fonctionnalités !</target>
+      </trans-unit>
+      <trans-unit id="148">
+        <source>Log me in</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="149">
+        <source>Categories</source>
+        <target>Catégories</target>
+      </trans-unit>
+      <trans-unit id="150">
+        <source>Number of %s%</source>
+        <target>Nombre de %s%</target>
+      </trans-unit>
+      <trans-unit id="151">
+        <source>All uploads</source>
+        <target>Tous les uploads</target>
+      </trans-unit>
+      <trans-unit id="152">
+        <source>Search</source>
+        <target>Recherche</target>
+      </trans-unit>
+      <trans-unit id="153">
+        <source>Modules</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="154">
+        <source>Donations</source>
+        <target>Dons</target>
+      </trans-unit>
+      <trans-unit id="155">
+        <source>Objective reached !</source>
+        <target>Objectif atteint !</target>
+      </trans-unit>
+      <trans-unit id="156">
+        <source>We've to reach %c%€</source>
+        <target>Nous devons atteindre %c%€</target>
+      </trans-unit>
+      <trans-unit id="157">
+        <source>Forums</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="158">
+        <source>Number of topics</source>
+        <target>Nombre de sujets</target>
+      </trans-unit>
+      <trans-unit id="159">
+        <source>Members</source>
+        <target>Membres</target>
+      </trans-unit>
+      <trans-unit id="160">
+        <source>Number of members</source>
+        <target>Nombre de membres</target>
+      </trans-unit>
+      <trans-unit id="161">
+        <source>News</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="162">
+        <source>Number of news</source>
+        <target>Nombre de news</target>
+      </trans-unit>
+      <trans-unit id="163">
+        <source>Polls</source>
+        <target>Sondages</target>
+      </trans-unit>
+      <trans-unit id="164">
+        <source>Number of polls</source>
+        <target>Nombre de sondages</target>
+      </trans-unit>
+      <trans-unit id="165">
+        <source>Topsite</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="166">
+        <source>Number of websites</source>
+        <target>Nombre de sites web</target>
+      </trans-unit>
+      <trans-unit id="167">
+        <source>My Account</source>
+        <target>Mon Compte</target>
+      </trans-unit>
+      <trans-unit id="168">
+        <source>Settings</source>
+        <target>Options</target>
+      </trans-unit>
+      <trans-unit id="169">
+        <source>Logout</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="170">
+        <source>Notifications</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="171">
+        <source>Messages</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="172">
+        <source>Activity</source>
+        <target>Activité</target>
+      </trans-unit>
+      <trans-unit id="173">
+        <source>Administration</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="174">
+        <source>%s% members connected</source>
+        <target>%s% membres connectés</target>
+      </trans-unit>
+      <trans-unit id="175">
+        <source>Your IP addresses</source>
+        <target>Vos adresses IP</target>
+      </trans-unit>
+      <trans-unit id="176">
+        <source>IP address</source>
+        <target>Adresse IP</target>
+      </trans-unit>
+      <trans-unit id="177">
+        <source>Created at</source>
+        <target>Créé(e) le</target>
+      </trans-unit>
+      <trans-unit id="178">
+        <source>Add</source>
+        <target>Ajouter</target>
+      </trans-unit>
+      <trans-unit id="179">
+        <source>No found IP address</source>
+        <target>Aucune adresse IP trouvée.</target>
+      </trans-unit>
+      <trans-unit id="180">
+        <source>Search a member</source>
+        <target>Rechercher un membre</target>
+      </trans-unit>
+      <trans-unit id="181">
+        <source>Search's results</source>
+        <target>Résultats de la recherche</target>
+      </trans-unit>
+      <trans-unit id="182">
+        <source>Online</source>
+        <target>En ligne</target>
+      </trans-unit>
+      <trans-unit id="183">
+        <source>Offline</source>
+        <target>Hors ligne</target>
+      </trans-unit>
+      <trans-unit id="184">
+        <source>Back to you in studio !</source>
+        <target>C'était April O'Neil, à vous les studios !</target>
+      </trans-unit>
+      <trans-unit id="185">
+        <source>This news has been deleted sucessfully.</source>
+        <target>Cette news a bien été supprimée.</target>
+      </trans-unit>
+      <trans-unit id="186">
+        <source>Changes are saved successfully. The cache will be refresh in a couple of minutes.</source>
+        <target>Les changements sont enregistrés. Le cache va être rechargé d'ici quelques minutes.</target>
+      </trans-unit>
+      <trans-unit id="187">
+        <source>Thanks. I will redirect you.</source>
+        <target>Merci. Je vais vous rediriger.</target>
+      </trans-unit>
+      <trans-unit id="188">
+        <source>I need at least 2 answers.</source>
+        <target>J'ai besoin d'au moins 2 réponses.</target>
+      </trans-unit>
+      <trans-unit id="189">
+        <source>The title seems too short for me.</source>
+        <target>Le titre me semble trop court.</target>
+      </trans-unit>
+      <trans-unit id="190">
+        <source>has just created a new poll !</source>
+        <target>vient de poster un nouveau sondage !</target>
+      </trans-unit>
+      <trans-unit id="191">
+        <source>Your poll has just been created. Go vote !</source>
+        <target>Votre sondage vient d'être créé. A vos votes !</target>
+      </trans-unit>
+      <trans-unit id="192">
+        <source>Changes are saved.</source>
+        <target>Changements sauvegardés.</target>
+      </trans-unit>
+      <trans-unit id="193">
+        <source>Your file has been deleted.</source>
+        <target>Votre fichier a bien été supprimé.</target>
+      </trans-unit>
+      <trans-unit id="194">
+        <source>I've some trouble when I try to delete your file.</source>
+        <target>J'ai quelques problèmes dès que j'essaye de supprimer votre fichier.</target>
+      </trans-unit>
+      <trans-unit id="195">
+        <source>Reseed.</source>
+        <target>Reseed.</target>
+      </trans-unit>
+      <trans-unit id="196">
+        <source>Your reseed request has been sent. Keep an eye on your private messages.</source>
+        <target>Votre demande de reseed a bien été envoyée. Gardez un oeil sur vos messages.</target>
+      </trans-unit>
+      <trans-unit id="197">
+        <source>Add your</source>
+        <target>Ajouter votre</target>
+      </trans-unit>
+      <trans-unit id="198">
+        <source>Add your upload</source>
+        <target>Ajouter votre upload</target>
+      </trans-unit>
+      <trans-unit id="199">
+        <source>Your screen seems small. Can I remove the central column while you see details of an upload ?</source>
+        <target>Votre écran me semble petit. Puis-je retirer le volet central pendant que vous regardez la fiche d'un upload ?</target>
+      </trans-unit>
+      <trans-unit id="200">
+        <source>No vote yet</source>
+        <target>Aucun vote pour l'instant</target>
+      </trans-unit>
+      <trans-unit id="201">
+        <source>Navy</source>
+        <target>Bleu marine</target>
+      </trans-unit>
+      <trans-unit id="202">
+        <source>Links (File Folders allowed)</source>
+        <target>Liens (File Folders supporté)</target>
+      </trans-unit>
+      <trans-unit id="203">
+        <source>Instructions</source>
+        <target>Consignes</target>
+      </trans-unit>
+      <trans-unit id="204">
+        <source>Torrent</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="205">
+        <source>Your ratio is insufficient: you can't download this file.</source>
+        <target>Votre ratio est insuffisant : vous ne pouvez pas télécharger ce fichier.</target>
+      </trans-unit>
+      <trans-unit id="206">
+        <source>Transfer mode</source>
+        <target>Mode de transfert</target>
+      </trans-unit>
+      <trans-unit id="207">
+        <source>Use MegaUpload</source>
+        <target>Utiliser MegaUpload</target>
+      </trans-unit>
+      <trans-unit id="208">
+        <source>BitTorrent is a protocol exchange between computers. It allows you to upload your file directly to the requesting users. This method allows you to see real-time exchange of your content.</source>
+        <target>BitTorrent est un protocole d'échance entre ordinateurs. Il vous permet d'envoyer votre fichier directement aux intéressés. Cette méthode permet ainsi de voir en temps réel l'échange de votre contenu.</target>
+      </trans-unit>
+      <trans-unit id="209">
+        <source>Use BitTorrent</source>
+        <target>Utiliser BitTorrent</target>
+      </trans-unit>
+      <trans-unit id="210">
+        <source>Each file will not have to exceed 1 GB.</source>
+        <target>Chaque fichier ne doit dépasser 1 Go.</target>
+      </trans-unit>
+      <trans-unit id="211">
+        <source>Processing</source>
+        <target>Traitement</target>
+      </trans-unit>
+      <trans-unit id="212">
+        <source>As soon as you submitted this form, we ask you to wait. An automatic checking will proceed in background, which takes more or loss takes time according to the number of files to treat.</source>
+        <target>Aussitôt que vous avez soumis le formulaire, nous vous demandons de bien vouloir patienter. Une vérification automatique aura lieu en arrière plan, ce qui prend plus ou moins de temps selon le nombre de fichiers à traiter.</target>
+      </trans-unit>
+      <trans-unit id="213">
+        <source>Moreover, the website could not any more answer you. Don't worry, the processing still continues.</source>
+        <target>De plus, le site peut ne plus vous répondre. Ne vous inquiétez pas, le traitement continue malgré tout.</target>
+      </trans-unit>
+      <trans-unit id="214">
+        <source>less than 5 seconds</source>
+        <target>moins de 5 secondes</target>
+      </trans-unit>
+      <trans-unit id="215">
+        <source>less than 10 seconds</source>
+        <target>moins de 10 secondes</target>
+      </trans-unit>
+      <trans-unit id="216">
+        <source>less than 20 seconds</source>
+        <target>moins de 20 secondes</target>
+      </trans-unit>
+      <trans-unit id="217">
+        <source>half a minute</source>
+        <target>moins de 30 secondes</target>
+      </trans-unit>
+      <trans-unit id="218">
+        <source>less than a minute</source>
+        <target>moins d'une minute</target>
+      </trans-unit>
+      <trans-unit id="219">
+        <source>%minutes% minutes</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="220">
+        <source>about 1 hour</source>
+        <target>environ une heure</target>
+      </trans-unit>
+      <trans-unit id="221">
+        <source>about %hours% hours</source>
+        <target>environ %hours% heures</target>
+      </trans-unit>
+      <trans-unit id="222">
+        <source>%days% day</source>
+        <target>%days% jour</target>
+      </trans-unit>
+      <trans-unit id="223">
+        <source>%days% days</source>
+        <target>%days% jours</target>
+      </trans-unit>
+      <trans-unit id="224">
+        <source>about 1 month</source>
+        <target>environ 1 mois</target>
+      </trans-unit>
+      <trans-unit id="225">
+        <source>%months% months</source>
+        <target>%months% mois</target>
+      </trans-unit>
+      <trans-unit id="226">
+        <source>about 1 year</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="227">
+        <source>over %years% years</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="228">
+        <source>Ratio</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="229">
+        <source>has just posted a new topic !</source>
+        <target>vient de poster un nouveau sujet !</target>
+      </trans-unit>
+      <trans-unit id="230">
+        <source>This topic has been deleted.</source>
+        <target>Ce sujet vient d'être supprimé.</target>
+      </trans-unit>
+      <trans-unit id="231">
+        <source>has just posted a news !</source>
+        <target>vient de poster une news !</target>
+      </trans-unit>
+      <trans-unit id="232">
+        <source>MegaUpload is a file hosting service online. Based in Hong Kong, it provides security to its users, in addition to a large bandwidth you can transfer your data quickly and permanently.</source>
+        <target>MegaUpload est un service d'hébergement de fichiers en line. Basé à Honk Kong, il apporte la sécurité à ses utilisateurs, en plus d'une large bande passante vous permettant de transférer rapidement et de façon permanente vos données.</target>
+      </trans-unit>
+      <trans-unit id="233">
+        <source>This mode is recommended for &lt;strong&gt;popular files&lt;/strong&gt; for rapid deployment to users. Warning, at least one user must download your file every 20 days (without MU registration), otherwise MegaUpload will delete it.</source>
+        <target>Ce mode est recommandé pour les &lt;strong&gt;fichiers populaires&lt;/strong&gt; pour un déploiement rapide aux utilisateurs. Attention, au moins un utilisateur doit télécharger votre fichier tous les 20 jours (sans inscription à MU), sinon MegaUpload va le supprimer.</target>
+      </trans-unit>
+      <trans-unit id="234">
+        <source>This mode is recommended for &lt;strong&gt;rare files&lt;/strong&gt;, sacrificing bandwidth to the benefit of a long period of availability.
+    However, it requires a tool such as  &lt;a href="http://www.utorrent.com"&gt;uTorrent&lt;/a&gt; (Windows) or &lt;a href="http://www.transmissionbt.com"&gt;Transmission&lt;/a&gt; (MacOS, GNU/Linux)</source>
+        <target>Ce mode est recommandé pour les &lt;strong&gt;fichiers rares&lt;/strong&gt;, sacrifiant la bande passante au profit d'une longue période de disponibilité.
+        Toutefois, cela nécessite un outil tel que &lt;a href="http://www.utorrent.com"&gt;uTorrent&lt;/a&gt; (Windows) ou &lt;a href="http://www.transmissionbt.com"&gt;Transmission&lt;/a&gt; (MacOS, GNU/Linux)</target>
+      </trans-unit>
+      <trans-unit id="235">
+        <source>is sharing a link !</source>
+        <target>partage un lien !</target>
+      </trans-unit>
+      <trans-unit id="236">
+        <source>The website links your IP addresses to your account allowing announce (the part of the tracker that communicates with your BitTorrent client) acknowledging you and authorize the transfer.</source>
+        <target>Le site lie vos adresses IP à votre compte, permettant à l'announce (la partie du tracker qui communique avec votre client BitTorrent) de vous reconnaître et d'autoriser les transferts.</target>
+      </trans-unit>
+      <trans-unit id="237">
+        <source>For safety, an IP not listed here is not allowed to connect to it. If you have a seedbox in your possession, simply add the IP address below to authorize it. Feel free to do the cleaning if multiple IPs from which you logged are old.</source>
+        <target>Par sécurité, une IP non-listée ici n'est pas autorisée à s'y connecter. Si vous avez un seedbox en votre possession, ajoutez simplement votre adresse
+        IP pour l'autoriser. N'hésitez pas à faire le ménage si plusieurs IPs à partir desquelles vous vous êtes connecté sont vieilles.
+        </target>
+      </trans-unit>
+      <trans-unit id="238">
+        <source>No member found</source>
+        <target>Aucun membre trouvé</target>
+      </trans-unit>
+      <trans-unit id="239">
+        <source>Dark version</source>
+        <target>Version foncée</target>
+      </trans-unit>
+      <trans-unit id="240">
+        <source>design by default</source>
+        <target>design par défaut</target>
+      </trans-unit>
+      <trans-unit id="241">
+        <source>Light version</source>
+        <target>Version claire</target>
+      </trans-unit>
+      <trans-unit id="242">
+        <source>alternative design</source>
+        <target>design alternatif</target>
+      </trans-unit>
+      <trans-unit id="243">
+        <source>These settings are stored on your computer through cookies. The default design is automatically set if the cookie is erased.</source>
+        <target>Ces paramètres sont stockés sur votre ordinateur via des cookies. Le design par défaut sera remis automatiquement si le cookie est effacé.</target>
+      </trans-unit>
+      <trans-unit id="244">
+        <source>Navigation Options</source>
+        <target>Options de navigation</target>
+      </trans-unit>
+      <trans-unit id="245">
+        <source>Remove the center column when viewing a upload</source>
+        <target>Enlever la colonne centrale dès la visualisation d'un upload</target>
+      </trans-unit>
+      <trans-unit id="246">
+        <source>Enabled</source>
+        <target>Activé</target>
+      </trans-unit>
+      <trans-unit id="247">
+        <source>Enable</source>
+        <target>Activer</target>
+      </trans-unit>
+      <trans-unit id="248">
+        <source>Disabled</source>
+        <target>Désactivé</target>
+      </trans-unit>
+      <trans-unit id="249">
+        <source>Disable</source>
+        <target>Désactiver</target>
+      </trans-unit>
+      <trans-unit id="250">
+        <source>just comment your upload</source>
+        <target>vient de commenter votre upload</target>
+      </trans-unit>
+      <trans-unit id="251">
+        <source>Delete all my notifications</source>
+        <target>Supprimer toutes mes notifications</target>
+      </trans-unit>
+      <trans-unit id="252">
+        <source>Actions</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="253">
+        <source>The poll has been deleted.</source>
+        <target>Ce sondage vient d'être supprimé.</target>
+      </trans-unit>
+      <trans-unit id="254">
+        <source>posted a new upload !</source>
+        <target>vient de poster un nouvel upload !</target>
+      </trans-unit>
+      <trans-unit id="255">
+        <source>Your account has been created. You can now proceed to login.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="256">
+        <source>Your message has been sent !</source>
+        <target>Votre message est envoyé !</target>
+      </trans-unit>
+      <trans-unit id="257">
+        <source>Your message has been deleted !</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="258">
+        <source>Your recipient(s) has been deleted !</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="259">
+        <source>Write a new message</source>
+        <target>Écrire un nouveau message</target>
+      </trans-unit>
+      <trans-unit id="260">
+        <source>Title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="261">
+        <source>Message</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="262">
+        <source>Recipient</source>
+        <target>Destinataire</target>
+      </trans-unit>
+      <trans-unit id="263">
+        <source>Add a member</source>
+        <target>Ajouter un membre</target>
+      </trans-unit>
+      <trans-unit id="264">
+        <source>has just added his website !</source>
+        <target>vient d'ajouter son site !</target>
+      </trans-unit>
+      <trans-unit id="265">
+        <source>This website has been deleted.</source>
+        <target>Ce site vient d'être supprimé.</target>
+      </trans-unit>
+      <trans-unit id="266">
+        <source>Add a new website</source>
+        <target>Ajouter un nouveau site</target>
+      </trans-unit>
+      <trans-unit id="267">
+        <source>You've to be logged in to add a new website</source>
+        <target>Vous devez être connecté pour ajouter un site</target>
+      </trans-unit>
+      <trans-unit id="268">
+        <source>Your account has been created. You can now proceed to login.</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="269">
+        <source>Your recipient(s) has been added !</source>
+        <target>Vous avez bien ajouté un ou plusieurs destinataires.</target>
+      </trans-unit>
+      <trans-unit id="270">
+        <source>Browsing mode</source>
+        <target>Mode de navigation</target>
+      </trans-unit>
+      <trans-unit id="271">
+        <source>You can choose how to browse on this website. Do you prefer to click to load a page or to let the website do it for you when do you hovering ?</source>
+        <target>Vous pouvez choisir comment naviguer sur ce site. Préférez-vous cliquer pour charger une page ou laisser le site le faire pour vous quand vous survolez ?</target>
+      </trans-unit>
+      <trans-unit id="272">
+        <source>Click</source>
+        <target>Clic</target>
+      </trans-unit>
+      <trans-unit id="273">
+        <source>Hover</source>
+        <target>Survol</target>
+      </trans-unit>
+      <trans-unit id="274">
+        <source>Changes are saved successfully.</source>
+        <target>Les changements sont bien sauvegardés.</target>
+      </trans-unit>
+      <trans-unit id="275">
+        <source>has just replied to this topic !</source>
+        <target>vient de répondre à ce sujet !</target>
+      </trans-unit>
+      <trans-unit id="276">
+        <source>and you</source>
+        <target>et vous</target>
+      </trans-unit>
+      <trans-unit id="277">
+        <source>[1]like it|[2]like it|[3]like it</source>
+        <target>[1]aimez ça|[2]aime ça|[3]aiment ça</target>
+      </trans-unit>
+      <trans-unit id="278">
+        <source>You like it</source>
+        <target>Vous aimez ça</target>
+      </trans-unit>
+      <trans-unit id="279">
+        <source>and</source>
+        <target>et</target>
+      </trans-unit>
+      <trans-unit id="280">
+        <source>Last Replies</source>
+        <target>Dernières Réponses</target>
+      </trans-unit>
+      <trans-unit id="281">
+        <source>Drop images here</source>
+        <target>Déposez vos images ici</target>
+      </trans-unit>
+      <trans-unit id="282">
+        <source>Back to homepage</source>
+        <target>Retour à l'accueil</target>
+      </trans-unit>
+      <trans-unit id="283">
+        <source>Smilies</source>
+        <target>Smileys</target>
+      </trans-unit>
+      <trans-unit id="284">
+        <source>has just made a donation of %amount% !</source>
+        <target>vient de faire un don de %amount% !</target>
+      </trans-unit>
+      <trans-unit id="285">
+        <source>Go to donations page !</source>
+        <target>Aller vers la page des dons</target>
+      </trans-unit>
+      <trans-unit id="286">
+        <source>Thanks for your donation !</source>
+        <target>Merci pour votre don !</target>
+      </trans-unit>
+      <trans-unit id="287">
+        <source>IP</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="288">
+        <source>Shoutbox</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="289">
+        <source>Uploads</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="290">
+        <source>Avatar</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="291">
+        <source>Age</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="292">
+        <source>Upload</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="293">
+        <source>Amount of your donation</source>
+        <target>Montant de votre don</target>
+      </trans-unit>
+      <trans-unit id="294">
+        <source>Goal to reach</source>
+        <target>Objectif à atteindre</target>
+      </trans-unit>
+      <trans-unit id="295">
+        <source>Best donors</source>
+        <target>Meilleurs donneurs</target>
+      </trans-unit>
+      <trans-unit id="296">
+        <source>Last donations</source>
+        <target>Derniers dons</target>
+      </trans-unit>
+      <trans-unit id="297">
+        <source>by</source>
+        <target>par</target>
+      </trans-unit>
+      <trans-unit id="298">
+        <source>Add a new poll</source>
+        <target>Ajouter un nouveau sondage</target>
+      </trans-unit>
+      <trans-unit id="299">
+        <source>Add a choice</source>
+        <target>Ajouter un choix</target>
+      </trans-unit>
+      <trans-unit id="300">
+        <source>Links</source>
+        <target>Liens</target>
+      </trans-unit>
+      <trans-unit id="301">
+        <source>Category</source>
+        <target>Catégorie</target>
+      </trans-unit>
+      <trans-unit id="302">
+        <source>Filters</source>
+        <target>Filtres</target>
+      </trans-unit>
+      <trans-unit id="303">
+        <source>Username</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="304">
+        <source>Password</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="305">
+        <source>Your password is too short !</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="306">
+        <source>Confirm</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="307">
+        <source>E-Mail</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="308">
+        <source>We've to reach %c%â‚¬</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="309">
+        <source>Direct Download</source>
+        <target>Téléchargement direct</target>
+      </trans-unit>
+      <trans-unit id="310">
+        <source>&lt;a href='http://jHeberg.net' target='_blank'&gt;jHeberg.net&lt;/a&gt; is a safe web-service which takes your content to duplicate it on several hosting providers.
+      It is the best direct-downloading solution to improve availability and let members access to your content, even you're offline.
+      &lt;br /&gt;Before uploading on it, you've have to create an account, otherwise, %name% can't check if the file belongs to you.</source>
+        <target>&lt;a href='http://jHeberg.net' target='_blank'&gt;jHeberg.net&lt;/a&gt; est un service en ligne sûr qui prend votre contenu et le duplique chez plusieurs hébergeurs.
+        C'est la meilleure solution de téléchargement direct qui améliore la disponibilité et l'accès de votre contenu aux membres, même si vous êtes hors-ligne.
+        &lt;br /&gt;Avant de débuter le transfert sur ce service, vous devez créer un compte. Sinon %name% ne pourra pas vérifier si le fichier vous appartient.
+        </target>
+      </trans-unit>
+      <trans-unit id="311">
+        <source>Use jHeberg.net</source>
+        <target>Utiliser jHeberg.net</target>
+      </trans-unit>
+      <trans-unit id="312">
+        <source>However, it requires a tool such as  &lt;a href="http://www.utorrent.com"&gt;uTorrent&lt;/a&gt; (Windows) or &lt;a href="http://www.transmissionbt.com"&gt;Transmission&lt;/a&gt; (MacOS, GNU/Linux)</source>
+        <target>Toutefois, cela nécessite un outil tel que &lt;a href="http://www.utorrent.com"&gt;uTorrent&lt;/a&gt; (Windows) ou &lt;a href="http://www.transmissionbt.com"&gt;Transmission&lt;/a&gt; (MacOS, GNU/Linux)</target>
+      </trans-unit>
+      <trans-unit id="313">
+        <source>You have to upload your content in your personnal &lt;a href='http://jHeberg.net' target='_blank'&gt;jHeberg.net&lt;/a&gt; account.
+      It allows you to store datas on several hosting providers easily and quickly in order to improve availability of your post.
+      When you're connected and your upload on jHeberg is finished, you've just to copy and paste links here. 
+      Name and size of each link will be retrived automatically.
+      %name% will match IP addresses stored in your IP list (in options) with the IP returned by jHeberg
+      (to check if the file belongs to you) and take into account the upload size.</source>
+        <target>Vous devez uploader votre contenu sur votre compte personnel de &lt;a href='http://jHeberg.net' target='_blank'&gt;jHeberg.net&lt;/a&gt;.
+        Cela vous permet de sauvegarder votre contenu sur plusieurs hébergeurs rapidement et simplement, dans le but d'améliorer la disponibilité de votre contenu.
+        Dès que vous êtes connectés et que votre upload sur jHeberg est fini, vous avez juste à copier/coller le(s) lien(s) ici.
+        Le nom et la taille de chaque lien vont être récupérés automatiquement.
+        %name% va faire la correspondance de vos adresses IP (dans vos options) avec celle retournée par jHeberg
+        (pour vérifier que le fichier vous appartient) et prendre en compte la taille de l'upload.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

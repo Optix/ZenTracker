@@ -1,0 +1,39 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+all:
+  # === General
+  name: 
+  mail: no-reply@domain.com
+  ## Registrations are open ?
+  register: true
+  ## Is an invitation is required ?
+  invitation: false
+  ## Minimum level required to create invitation
+  invite_minlevel: 2
+  ## Can an invit be used more than once ?
+  invite_multiple: true
+  ## Send a validation mail before login ?
+  validate: false
+  
+  # === BitTorrent
+  ## Time between updates
+  bt_interval: 900
+  ## Allow freelech 
+  bt_allowfreeleech: true
+  ## Allow direct download link (jHeberg)
+  bt_allowddl: true
+  ## Can uploader choose their own minimum level for their uploads ?
+  bt_allowminlevelmbr: true
+  bt_minleveldefault: 2
+
+  # === Donations
+  dons_objectif: 30 # Amount to reach
+  paypal_mail: zentracker.tresor@gmail.com  # PayPal account
+  
+  # === News
+  nws_home: 2   # Number of lastest news displayed on homepage (right side)
+
+  # === Shoutboc
+  sht_ispublic: true

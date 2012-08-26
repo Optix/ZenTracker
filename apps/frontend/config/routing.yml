@@ -1,0 +1,81 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# Announce
+announce:
+  url: /announce
+  param: { module: main, action: announce }
+# Scrape
+scrape:
+  url: /scrape
+  param: { module: main, action: scrape }
+
+# Member's profile
+profile:
+  url: /profile/:slug
+  class:   sfDoctrineRoute
+  options: { model: Users, type: object }
+  param: { module: membres, action: show }
+
+# News
+news:
+  url: /news/:slug
+  class:   sfDoctrineRoute
+  options: { model: News, type: object }
+  param: { module: news, action: show }
+  requirements:
+    sf_method: [get, post]
+
+# Uploads
+uploadcats:
+  url: /category/:c
+  param: { module: partage, action: index }
+  requirements:
+    sf_method: [get, post]
+upload:
+  url: /upload/:c/:slug
+  class: sfDoctrineRoute
+  options: { model: Uploads, type: object }
+  param: { module: partage, action: fiche }
+  requirements:
+    sf_method: [get, post]
+download:
+  url: /download/:slug
+  class: sfDoctrineRoute
+  options: { model: Uploads, type: object }
+  param: { module: partage, action: download }
+
+# Forums
+forum:
+  url: /forums/:c/:slug
+  class: sfDoctrineRoute
+  options: { model: FrmForums, type: object }
+  param: { module: forums, action: list }
+topic:
+  url: /forums/:c/:f/:slug
+  class: sfDoctrineRoute
+  options: { model: FrmTopics, type: object }
+  param: { module: forums, action: topic }
+
+# PM
+pm:
+  url: /pm/:slug
+  class:   sfDoctrineRoute
+  options: { model: PmTopics, type: object }
+  param: { module: messages, action: show }
+  requirements:
+    sf_method: [get, post]
+
+# default rules
+homepage:
+  url:   /
+  param: { module: main, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

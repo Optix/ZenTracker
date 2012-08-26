@@ -1,0 +1,17 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/08-Security
+
+all:
+  is_secure: false
+  
+add:
+  is_secure: true
+  credentials: [[adm, mod]]
+  
+supprimer:
+  is_secure: true
+  credentials: [[adm, mod]]
+  
+editer:
+  is_secure: true
+  credentials: [[adm, mod]]

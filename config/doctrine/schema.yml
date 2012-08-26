@@ -1,0 +1,767 @@
+Categories:
+  connection: doctrine
+  tableName: categories
+  actAs:
+    NestedSet:
+      hasManyRoots: true
+      rootColumnName: root_id
+    Sluggable:
+      unique: true
+      fields: [name]
+      canUpdate: true
+  columns:
+    name:
+      type: string(45)
+      notnull: true
+    picture:
+      type: string(255)
+  relations:
+    Uploads:
+      local: id
+      foreign: cat
+      type: many
+Donations:
+  connection: doctrine
+  tableName: donations
+  actAs: { Timestampable: ~ }
+  columns:
+    donor:
+      type: integer
+    amount:
+      type: float()
+      unsigned: true
+      notnull: true
+  relations:
+    Users:
+      local: donor
+      foreign: id
+      type: one
+      onDelete: SET NULL
+FrmCats:
+  connection: doctrine
+  tableName: frm_cats
+  actAs:  
+    Sluggable:
+      unique: true
+      fields: [name]
+      canUpdate: true
+  columns:
+    name:
+      type: string(45)
+      notnull: true
+  relations:
+    FrmForums:
+      local: id
+      foreign: cat
+      type: many
+FrmForums:
+  connection: doctrine
+  tableName: frm_forums
+  actAs:  
+    Timestampable: ~
+    Sluggable:
+      unique: true
+      fields: [name]
+      canUpdate: true
+  columns:
+    cat:
+      type: integer
+      notnull: true
+    name:
+      type: string(60)
+      notnull: true
+    description:
+      type: string(140)
+    minroleread:
+      type: string(3)
+    minlevelread:
+      type: integer
+    minrolewrite:
+      type: string(3)
+    minlevelwrite:
+      type: integer
+  relations:
+    FrmCats:
+      local: cat
+      foreign: id
+      type: one
+    FrmTopics:
+      local: id
+      foreign: forum
+      type: many
+FrmTopics:
+  connection: doctrine
+  tableName: frm_topics
+  actAs:  
+    Timestampable: ~
+    SoftDelete: ~
+    Sluggable:
+      unique: true
+      fields: [title]
+      canUpdate: true
+  columns:
+    forum:
+      type: integer
+      notnull: true
+    title:
+      type: string(60)
+      notnull: true
+    is_locked:
+      type: boolean
+    is_important:
+      type: boolean
+  relations:
+    FrmForums:
+      local: forum
+      foreign: id
+      type: one
+    FrmTopicsUsr:
+      local: id
+      foreign: topic
+      type: many
+FrmMessages:
+  columns:
+    tid: integer
+  inheritance:
+    extends: MsgMessages
+    type: column_aggregation
+    keyField: module
+    keyValue: forums
+  relations:
+    FrmTopics:
+      local: tid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+FrmTopicsUsr:
+  connection: doctrine
+  tableName: frm_topicsusr
+  columns:
+    topic:
+      type: integer
+      primary: true
+    uid:
+      type: integer
+      primary: true
+    following:
+      type: boolean
+    replied:
+      type: boolean
+    lastmsgid:
+      type: integer
+      notnull: true
+  relations:
+    Users:
+      local: uid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+    FrmTopics:
+      local: topic
+      foreign: id
+      type: one
+      onDelete: CASCADE
+    MsgMessages:
+      local: lastmsgid
+      foreign: id
+      type: one
+Ips:
+  connection: doctrine
+  tableName: ips
+  actAs: { Timestampable: ~ }
+  columns:
+    ip:
+      type: string(45)
+      primary: true
+    uid:
+      type: integer
+      notnull: true
+  relations:
+    Users:
+      local: uid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+Invites:
+  connection: doctrine
+  tableName: invites
+  columns:
+    uid:
+      type: integer
+      notnull: true
+      primary: true
+    code:
+      type: string(10)
+      notnull: true
+      primary: true
+    expire:
+      type: datetime
+      notnull: true
+    multiple:
+      type: boolean
+  relations:
+    Users:
+      local: uid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+Notifications:
+  connection: doctrine
+  tableName: notifications
+  actAs: { Timestampable: ~ }
+  columns:
+    owner:
+      type: integer
+      notnull: true
+    uid:
+      type: integer
+    readed:
+      type: boolean
+    picture:
+      type: string(255)
+    message:
+      type: string()
+      notnull: true
+    link:
+      type: string(255)
+    extract:
+      type: string(255)
+  relations:
+    Users:
+      local: uid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+Users:
+  connection: doctrine
+  tableName: users
+  actAs:  
+    Timestampable: ~
+    Sluggable:
+      unique: true
+      fields: [username]
+      canUpdate: true
+  columns:
+    parent:
+      type: integer
+    username:
+      type: string(25)
+      notnull: true
+    password:
+      type: string(64)
+      notnull: true
+    passexpires:
+      type: datetime
+      notnull: true
+    random:
+      type: string(5)
+      notnull: true
+    email:
+      type: string(255)
+      notnull: true
+    avatar:
+      type: string(255)
+    lastvisit:
+      type: datetime
+    pid:
+      type: string(40)
+      notnull: true
+      fixed: true
+    role:
+      type: string(3)
+      default: 'mbr'
+    active:
+      type: boolean
+      default: true
+    reason:
+      type: string(255)
+    ban_expire:
+      type: datetime
+    description:
+      type: string()
+  relations:
+    Parents:
+      class: Users
+      foreignAlias: Parents
+      foreign: id
+      local: parent
+    Invites:
+      local: id
+      foreign: uid
+      type: many
+    Notifications:
+      local: id
+      foreign: uid
+      type: many
+    Donations:
+      local: id
+      foreign: donor
+      type: many
+    FrmTopicsUsr:
+      local: id
+      foreign: uid
+      type: many
+    Ips:
+      local: id
+      foreign: uid
+      type: many
+    PmParticipants:
+      local: id
+      foreign: mpmid
+      type: many
+    News:
+      local: id
+      foreign: author
+      type: many
+    PollVotes:
+      local: mbr_id
+      foreign: mid
+      type: many
+    Shoutbox:
+      local: id
+      foreign: author
+      type: many
+    Uploads:
+      local: id
+      foreign: author
+      type: many
+    UploadsHits:
+      local: id
+      foreign: uid
+      type: many
+    TorrentsPeers:
+      local: id
+      foreign: mid
+      type: many
+    TorrentsPeersOffset:
+      local: pid
+      foreign: pid
+      type: many
+PmParticipants:
+  connection: doctrine
+  tableName: pm_participants
+  columns:
+    mpid:
+      type: integer
+      primary: true
+    mpmid:
+      type: integer
+      primary: true
+    readed:
+      type: boolean
+    deleted:
+      type: boolean
+  relations:
+    Users:
+      local: mpmid
+      foreign: id
+      type: one
+    PmTopics:
+      local: mpid
+      foreign: id
+      type: one
+PmTopics:
+  connection: doctrine
+  tableName: pm_topics
+  actAs:  
+    Timestampable: ~
+    Sluggable:
+      unique: true
+      fields: [title]
+      canUpdate: true
+  columns:
+    title:
+      type: string(60)
+  relations:
+    PmParticipants:
+      local: id
+      foreign: mpid
+      type: many
+PmMessages:
+  columns:
+    pmid: integer
+  inheritance:
+    extends: MsgMessages
+    type: column_aggregation
+    keyField: module
+    keyValue: pm
+  relations:
+    PmTopics:
+      local: pmid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+News:
+  connection: doctrine
+  tableName: news
+  actAs:  
+    Timestampable: ~
+    SoftDelete: ~
+    Sluggable:
+      unique: true
+      fields: [title]
+      canUpdate: true
+  columns:
+    title:
+      type: string(60)
+      notnull: true
+    description:
+      type: string()
+      notnull: true
+    author:
+      type: integer
+  relations:
+    Users:
+      local: author
+      foreign: id
+      type: one
+      onDelete: SET NULL
+Polls:
+  connection: doctrine
+  tableName: poll_polls
+  actAs:  
+    Timestampable: ~
+    SoftDelete: ~
+    Sluggable:
+      unique: true
+      fields: [title]
+      canUpdate: true
+  columns:
+    title:
+      type: string(140)
+      notnull: true
+    multiple:
+      type: boolean
+  relations:
+    PollChoices:
+      local: id
+      foreign: poll
+      type: many
+PollChoices:
+  connection: doctrine
+  tableName: poll_choices
+  columns:
+    poll:
+      type: integer
+      notnull: true
+    choice:
+      type: string(128)
+      notnull: true
+  relations:
+    Polls:
+      local: poll
+      foreign: id
+      type: one
+      onDelete: CASCADE
+    PollVotes:
+      local: id
+      foreign: choice
+      type: many
+PollVotes:
+  connection: doctrine
+  tableName: poll_votes
+  columns:
+    choice:
+      type: integer
+      primary: true
+    uid:
+      type: integer
+      primary: true
+  relations:
+    PollChoices:
+      local: choice
+      foreign: id
+      type: one
+    Users:
+      local: uid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+Shoutbox:
+  connection: doctrine
+  tableName: shoutbox
+  actAs:  
+    Timestampable: ~
+    SoftDelete: ~
+  columns:
+    author:
+      type: integer
+    description:
+      type: string()
+    link:
+      type: string(255)
+    system:
+      type: boolean
+  relations:
+    Users:
+      local: author
+      foreign: id
+      type: one
+      onDelete: SET NULL
+ShoutboxComs:
+  columns:
+    shtid: integer
+  inheritance:
+    extends: MsgMessages
+    type: column_aggregation
+    keyField: module
+    keyValue: sht
+  relations:
+    Shoutbox:
+      local: shtid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+PollComs:
+  columns:
+    pollid: integer
+  inheritance:
+    extends: MsgMessages
+    type: column_aggregation
+    keyField: module
+    keyValue: poll
+  relations:
+    Polls:
+      local: pollid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+NewsComs:
+  columns:
+    pollid: integer
+  inheritance:
+    extends: MsgMessages
+    type: column_aggregation
+    keyField: module
+    keyValue: news
+  relations:
+    News:
+      local: nwsid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+Uploads:
+  connection: doctrine
+  tableName: uploads
+  actAs:  
+    Timestampable: ~
+    Sluggable:
+      unique: true
+      fields: [title]
+      canUpdate: true
+  columns:
+    hash:
+      type: string(40)
+      fixed: true
+    title:
+      type: string(100)
+      notnull: true
+    cat:
+      type: integer
+      notnull: true
+    description:
+      type: string()
+      notnull: true
+    nfo:
+      type: string()
+    author:
+      type: integer
+    url:
+      type: string(255)
+    size:
+      type: integer
+      unsigned: true
+      notnull: true
+    minlevel:
+      type: integer
+      notnull: true
+  relations:
+    Cat:
+      local: cat
+      foreign: id
+      type: one
+    Users:
+      local: author
+      foreign: id
+      type: one
+    UploadsHits:
+      local: id
+      foreign: upid
+      type: many
+    TorrentsPeers:
+      local: hash
+      foreign: hash
+      type: many
+    TorrentsPeersOffset:
+      local: hash
+      foreign: hash
+      type: many
+UploadsComs:
+  columns:
+    upid: integer
+  inheritance:
+    extends: MsgMessages
+    type: column_aggregation
+    keyField: module
+    keyValue: up
+  relations:
+    Uploads:
+      local: upid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+UploadsHits:
+  connection: doctrine
+  tableName: uploads_hits
+  actAs:  
+    Timestampable: ~
+  columns:
+    upid:
+      type: integer
+      primary: true
+    uid:
+      type: integer
+      primary: true
+  relations:
+    Users:
+      local: uid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+    Uploads:
+      local: upid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+TorrentsPeers:
+  connection: doctrine
+  tableName: torrents_peers
+  actAs: { Timestampable: ~ }
+  columns:
+    hash:
+      type: string(40)
+      fixed: true
+      primary: true
+    pid:
+      type: string(40)
+      fixed: true
+      primary: true
+    peer_id:
+      type: string(40)
+      fixed: true
+      notnull: true
+    uid:
+      type: integer
+    ip:
+      type: string(45)
+      notnull: true
+    port:
+      type: integer(2)
+      unsigned: true
+      notnull: true
+    download:
+      type: integer(8)
+      unsigned: true
+      notnull: true
+    upload:
+      type: integer(8)
+      unsigned: true
+      notnull: true
+    remain:
+      type: integer(8)
+      unsigned: true
+      notnull: true
+    useragent:
+      type: string(45)
+      notnull: true
+  relations:
+    Users:
+      local: uid
+      foreign: id
+      type: one
+      onDelete: SET NULL
+    Uploads:
+      local: hash
+      foreign: hash
+      type: one
+      onDelete: CASCADE
+      onUpdate: CASCADE
+TorrentsPeersOffset:
+  connection: doctrine
+  tableName: torrents_peers_offset
+  columns:
+    hash:
+      type: string(40)
+      fixed: true
+      primary: true
+    pid:
+      type: string(40)
+      fixed: true
+      primary: true
+    download:
+      type: integer(8)
+      unsigned: true
+      notnull: true
+    upload:
+      type: integer(8)
+      unsigned: true
+      notnull: true
+  relations:
+    Users:
+      local: pid
+      foreign: pid
+      type: one
+      onDelete: CASCADE
+    Uploads:
+      local: hash
+      foreign: hash
+      type: one
+      onDelete: CASCADE
+      onUpdate: CASCADE
+MsgMessages:
+  connection: doctrine
+  tableName: msg_messages
+  actAs:  
+    Timestampable: ~
+    SoftDelete: ~
+  columns:
+    author:
+      type: integer
+    content:
+      type: string()
+      notnull: true
+  relations:
+    Users:
+      local: author
+      foreign: id
+      type: one
+      onDelete: SET NULL
+    MsgVotes:
+      local: id
+      foreign: mid
+      type: many
+MsgVotes:
+  connection: doctrine
+  tableName: msg_votes
+  actAs:  
+    Timestampable: ~
+  columns:
+    uid:
+      type: integer
+      primary: true
+    mid:
+      type: integer
+      primary: true
+    vote:
+      type: boolean
+  relations:
+    Users:
+      local: uid
+      foreign: id
+      type: one
+      onDelete: CASCADE
+    MsgMessages:
+      local: mid
+      foreign: id
+      type: one
+      onDelete: CASCADE

@@ -1,0 +1,7 @@
+_sidebar:
+  enabled: false
+  contextual: false
+  
+_categories:
+  enabled: true
+  lifetime: 3600

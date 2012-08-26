@@ -1,0 +1,12 @@
+#all:
+#  doctrine:
+#    class: sfDoctrineDatabase
+#    param:
+#      dsn: 'mysql:host=localhost;dbname=zt2'
+#      username: zt2
+#      password: zen
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: sqlite:///%SF_DATA_DIR%/zen.db?mode=0777

@@ -1,0 +1,19 @@
+# Project files
+/apps/frontend/config/app.yml
+/apps/frontend/config/view.yml
+/config/databases.yml
+/cache/*
+/log/*
+/web/*_dev.php
+/web/uploads/*
+
+# SCM files
+.arch-params
+.bzr
+_darcs
+.git
+.hg
+.monotone
+.svn
+nohup.out
+CVS

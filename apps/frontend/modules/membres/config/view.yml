@@ -1,0 +1,5 @@
+show:
+  has_layout: off
+
+all:
+  has_layout: on
