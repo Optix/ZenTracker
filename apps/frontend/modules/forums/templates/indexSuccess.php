@@ -6,7 +6,7 @@
       </h3>
     </a>
     <?php foreach ($f['FrmForums'] as $ff): ?>
-      <a class="entree btn" href="<?=url_for('@forum?c='.$f['slug']."&slug=".$ff['slug'])?>" style="height: 44px">
+      <a class="entree btn" href="<?=url_for('@forum?c='.$f['slug']."&slug=".$ff['slug'])?>" style="height: 44px;overflow: hidden">
         <div class="thumbnail">
           <img class="avatar" src="/images/icones/32x32/comments.png" alt="" />
         </div>

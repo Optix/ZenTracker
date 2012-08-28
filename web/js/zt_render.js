@@ -152,7 +152,7 @@ function renderForums(i, l) {
 		var tpl = $('<div class="entree btn btn-inverse"><h3></h3></div>');
   // Or a forum
 	else {
-    tpl.css("height", "44px");
+    tpl.css("height", "44px").css('overflow', 'hidden');
     tpl.attr('href', l.url);
     tpl.children("p").text(l.description);
     tpl.find(".avatar").attr("src", "/images/icones/32x32/comments.png");
