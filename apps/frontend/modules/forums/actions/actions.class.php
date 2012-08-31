@@ -10,7 +10,7 @@
  */
 class forumsActions extends sfActions {
  /**
-  * Liste des forums
+  * Forums index
   */
   public function executeIndex(sfWebRequest $r) {
     // Getting forumlist
@@ -58,20 +58,37 @@ class forumsActions extends sfActions {
     }
   }
 
+  /**
+  * Adding new categorie
+  */
+  public function executeAdd(sfWebRequest $r) {
+    $f = new FrmCatsForm();
+    if ($r->isMethod('post')) {
+      $f->bind($r->getParameter($f->getName()));
+      if ($f->isValid()) {
+        $f->save();
+        $this->redirect('forums/index');
+      }
+    }
+  }
 
-
-
+  /**
+  * Adding new forum
+  */
   public function executeAddfrm(sfWebRequest $r) {
     $f = new FrmForumsForm();
     if ($r->isMethod('post')) {
       $f->bind($r->getParameter($f->getName()));
       if ($f->isValid()) {
         $f->save();
-        return $this->renderText("ok");
+        $this->redirect('forums/index');
       }
     }
   }
 
+  /**
+  * Adding new topic
+  */
   public function executeNew(sfWebRequest $r) {
     $this->form = new FrmTopicsForm();
     if ($r->isMethod('post')) {

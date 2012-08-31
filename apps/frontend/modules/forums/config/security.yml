@@ -9,3 +9,9 @@ delete:
 
 edittopic:
   credentials: [[adm, mod]]
+
+add:
+  credentials: adm
+
+addfrm:
+  credentials: adm
