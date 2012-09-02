@@ -57,9 +57,9 @@ class partageActions extends sfActions {
     $t->select('r.*, c.*, u.username, u.avatar, u.slug')
       ->addSelect('(SELECT COUNT(*) FROM MsgMessages m WHERE module = "up" AND upid = r.id) AS cnt_coms')
       ->addSelect('(SELECT COUNT(*) FROM TorrentsPeers p WHERE p.hash = r.hash 
-        AND remain = 0 AND updated_at > (NOW() - INTERVAL 1 HOUR)) AS cnt_seeders')
+        AND remain = 0 AND updated_at > "'.date('Y-m-d H:i:s', time()-3600).'") AS cnt_seeders')
       ->addSelect('(SELECT COUNT(*) FROM TorrentsPeers pp WHERE pp.hash = r.hash 
-        AND remain > 0 AND updated_at > (NOW() - INTERVAL 1 HOUR)) AS cnt_leechers')
+        AND remain > 0 AND updated_at > "'.date('Y-m-d H:i:s', time()-3600).'") AS cnt_leechers')
       ->addSelect('(SELECT COUNT(*) FROM TorrentsPeers ppp WHERE ppp.hash = r.hash 
         AND remain = 0) AS cnt_completed')
       ->leftJoin("r.Categories c")->leftJoin("r.Users u")->orderBy("id desc");
@@ -145,7 +145,7 @@ class partageActions extends sfActions {
         ->from('TorrentsPeers p')
         ->leftJoin('p.Users u')
         ->where('p.hash = ?', $this->u->getHash())
-        ->andWhere('p.updated_at > (NOW() - INTERVAL 1 HOUR)')
+        ->andWhere('p.updated_at > ?', date('Y-m-d H:i:s', time()-3600))
         ->orderBy('remain')
         ->execute(array(), Doctrine::HYDRATE_ARRAY);
 

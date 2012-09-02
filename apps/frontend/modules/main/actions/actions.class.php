@@ -172,7 +172,7 @@ class mainActions extends sfActions
     // Getting the torrent and related peers & co
     $torrent = Doctrine_Query::create()
       ->select('t.minlevel, p.*, o.*, UNHEX(p.peer_id) as peerid')->from("Uploads t")
-      ->leftJoin('t.TorrentsPeers p WITH p.updated_at > (NOW() - INTERVAL 1 HOUR)') // Recents peers
+      ->leftJoin('t.TorrentsPeers p WITH p.updated_at > ?', date('Y-m-d H:i:s', time()-3600)) // Recents peers
       ->leftJoin('t.TorrentsPeersOffset o WITH o.pid = ?', $mbr->getPid()) // Our offset (where did we stopped last time ?)
       ->where('t.hash = ?', $hash)
       ->useQueryCache(true)->setQueryCacheLifeSpan(3600*24) // Just caching raw SQL request, not the result 
