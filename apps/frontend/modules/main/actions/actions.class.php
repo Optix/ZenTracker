@@ -92,7 +92,8 @@ class mainActions extends sfActions
     if ($this->getUser()->isAuthenticated()) {
       foreach ($r->getFiles() as $fileName) {
         // Check image
-        if (!is_array(getimagesize($fileName['tmp_name']))) {
+        if (!is_array(getimagesize($fileName['tmp_name']))
+		 || !in_array(substr(strrchr($fileName['name'],'.'),1), array('png', 'jpg', 'jpeg', 'gif', 'bmp')) {
           echo json_encode(array('status' => "Only images are allowed!"));
           exit();
         }
