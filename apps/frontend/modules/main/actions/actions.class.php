@@ -93,7 +93,7 @@ class mainActions extends sfActions
       foreach ($r->getFiles() as $fileName) {
         // Check image
         if (!is_array(getimagesize($fileName['tmp_name']))
-		 || !in_array(substr(strrchr($fileName['name'],'.'),1), array('png', 'jpg', 'jpeg', 'gif', 'bmp')) {
+		     || !in_array(substr(strrchr($fileName['name'],'.'),1), array('png', 'jpg', 'jpeg', 'gif', 'bmp')) {
           echo json_encode(array('status' => "Only images are allowed!"));
           exit();
         }
@@ -172,7 +172,7 @@ class mainActions extends sfActions
 
     // Getting the torrent and related peers & co
     $torrent = Doctrine_Query::create()
-      ->select('t.minlevel, p.*, o.*, UNHEX(p.peer_id) as peerid')->from("Uploads t")
+      ->select('t.minlevel, p.*, o.*')->from("Uploads t")
       ->leftJoin('t.TorrentsPeers p WITH p.updated_at > ?', date('Y-m-d H:i:s', time()-3600)) // Recents peers
       ->leftJoin('t.TorrentsPeersOffset o WITH o.pid = ?', $mbr->getPid()) // Our offset (where did we stopped last time ?)
       ->where('t.hash = ?', $hash)
@@ -405,6 +405,9 @@ class mainActions extends sfActions
       // If client doesn't care about peerid
       if ($this->noPeerId)
         unset($p['peer_id']);
+      // Else, unhex the PeerId before sending
+      else
+        $p['peer_id'] = pack('H*', $p['peer_id']);
 
       // Storing in return array
       $r[] = $p;
