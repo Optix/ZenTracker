@@ -37,6 +37,9 @@ class sfFileCache extends sfCache
   */
   public function initialize($options = array())
   {
+    if (!isset($options['cache_dir']))
+      $options['cache_dir'] = "../cache/";
+
     parent::initialize($options);
 
     $this->setcache_dir("../cache/");

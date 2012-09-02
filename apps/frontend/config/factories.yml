@@ -48,4 +48,5 @@ all:
       cache_key_use_host_name:    true
 
   cache:
-    class: sfMemcacheCache
+    # class: sfMemcacheCache
+    class: sfFileCache
