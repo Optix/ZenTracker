@@ -14,40 +14,56 @@ class messagesActions extends sfActions
   * Liste des messages
   */
   public function executeIndex(sfWebRequest $r) {
-    // On récupère la liste des messages
-    $this->q = (array) Doctrine::getTable("PmTopics")->getMessages($this->getUser()->getAttribute("id"))->execute(array(), Doctrine::HYDRATE_ARRAY);
+    // Getting private messages
+    $this->q = Doctrine::getTable("PmTopics")->getMessages($this->getUser()->getAttribute("id"));
 
-    // For each PM, we're cheating with JS frontend : PM seems like forum topics.
-    foreach ($this->q as $id => $t) {
-      // Replace PM topics with forum ones
-      $this->q[$id]['FrmMessages'] = $this->q[$id]['PmMessages'];
-      unset($this->q[$id]['PmMessages']);
-      // Let's cheating about the last msg readed
-      $this->q[$id]['FrmTopicsUsr'] = array();
-      if ($t['PmParticipants'][0]['readed'])
-        $this->q[$id]['FrmTopicsUsr'][0] = array("lastmsgid" => $this->q[$id]['FrmMessages'][0]['id']);
-      else
-        $this->q[$id]['FrmTopicsUsr'][0] = array("lastmsgid" => 0);
-      // Generate URL, simply by adding slug behind current URL
-      $this->q[$id]['url'] = $this->getContext()->getController()->genUrl('@pm?slug='.$t['slug']);
-      // Formatting date
-      $this->q[$id]['updated_at'] = strtotime($this->q[$id]['updated_at']);
+    // If Ajax call
+    if ($r->isXmlHttpRequest()) {
+      // Storing PMs in a array
+      $this->q = (array) $this->q->execute(array(), Doctrine::HYDRATE_ARRAY);
+
+      // For each PM, we're cheating with JS frontend : PM seems like forum topics.
+      foreach ($this->q as $id => $t) {
+        // Replace PM topics with forum ones
+        $this->q[$id]['FrmMessages'] = $this->q[$id]['PmMessages'];
+        unset($this->q[$id]['PmMessages']);
+        // Let's cheating about the last msg readed
+        $this->q[$id]['FrmTopicsUsr'] = array();
+        if ($t['PmParticipants'][0]['readed'])
+          $this->q[$id]['FrmTopicsUsr'][0] = array("lastmsgid" => $this->q[$id]['FrmMessages'][0]['id']);
+        else
+          $this->q[$id]['FrmTopicsUsr'][0] = array("lastmsgid" => 0);
+        // Generate URL, simply by adding slug behind current URL
+        $this->q[$id]['url'] = $this->getContext()->getController()->genUrl('@pm?slug='.$t['slug']);
+        // Formatting date
+        $this->q[$id]['updated_at'] = strtotime($this->q[$id]['updated_at']);
+      }
+
+      // Prepare something to write
+      $n = array("new" => $this->getTab("New private message", "add.png", $this->getComponent('messages', 'newpm')));
+
+      // If we're admin, we can mass-mail every member
+      if ($this->getUser()->hasCredential('adm'))
+        $n['massmail'] = $this->getTab("Mass-mail", "email_to_friend.png", 
+          $this->getPartial($this->getModuleName()."/massmail", array("form" => new MailForm()))
+        );
+      
+      // Sending JSON to browser with correct MIME
+      $this->getResponse()->setHttpHeader('Content-type','application/json');
+      return $this->renderText(json_encode(array(
+        "left" => $this->q,
+        "right" => $n,
+        "module" => "topics",
+      )));
     }
-
-    // Prepare something to write
-    $n = array("new" => $this->getTab("New private message", "add.png", $this->getComponent('messages', 'newpm')));
-
-    // If we're admin, we can mass-mail every member
-    if ($this->getUser()->hasCredential('adm'))
-      $n['massmail'] = $this->getTab("Mass-mail", "email_to_friend.png", 
-        $this->getPartial($this->getModuleName()."/massmail", array("form" => new MailForm()))
-      );
-    
-    return $this->renderText(json_encode(array(
-      "left" => $this->q,
-      "right" => $n,
-      "module" => "topics",
-    )));
+    // HTTP call
+    else {
+      $this->list = new sfDoctrinePager('PmTopics', 20);
+      $this->list->setQuery($this->q);
+      $this->list->setPage($r->getParameter("page", 1));
+      $this->list->init();
+      $this->page = $r->getParameter("page", 1);
+    }
   }
 
   public function executeAdd(sfWebRequest $r) {
