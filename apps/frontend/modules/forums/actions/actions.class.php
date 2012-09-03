@@ -129,21 +129,41 @@ class forumsActions extends sfActions {
       $this->redirect($this->getModuleName().'/index');
 	
   	// Getting all threads in this forum
-  	$this->topics = Doctrine::getTable("FrmTopics")->getTopics($this->q->getId())->toArray();
-    // For each topic
-    foreach ($this->topics as $id => $t) {
-      // Generate URL, simply by adding slug behind current URL
-      $this->topics[$id]['url'] = $r->getUri()."/".$t['slug'];
+  	$this->topics = Doctrine::getTable("FrmTopics")->getTopics($this->q->getId());
+
+    // If AJAX call
+    if ($r->isXmlHttpRequest()) {
+      // Getting array from topics
+      $this->topics = $this->topics->execute(array(), Doctrine::HYDRATE_ARRAY);
+
+      // For each topic
+      foreach ($this->topics as $id => $t) {
+        // Generate URL, simply by adding slug behind current URL
+        $this->topics[$id]['url'] = $r->getUri()."/".$t['slug'];
+        // Converting time
+        $this->topics[$id]['updated_at'] = strtotime($t['updated_at']);
+      }
+
+    	// Sending JSON to browser with correct MIME
+      $this->getResponse()->setHttpHeader('Content-type','application/json');
+    	return $this->renderText(json_encode(array(
+    		"left" => $this->topics,
+    		"right" => array(
+    			"new" => $this->getTab("New topic", "add.png", $this->getComponent('forums', 'newtopic',
+            array('forum' => $this->q)))
+    		),
+    		"module" => "topics",
+    	)));
     }
-  	
-  	return $this->renderText(json_encode(array(
-  		"left" => $this->topics,
-  		"right" => array(
-  			"new" => $this->getTab("New topic", "add.png", $this->getComponent('forums', 'newtopic',
-          array('forum' => $this->q)))
-  		),
-  		"module" => "topics",
-  	)));
+    // HTTP call
+    else {
+      $this->list = new sfDoctrinePager('FrmTopics', 20);
+      $this->list->setQuery($this->topics);
+      $this->list->setPage($r->getParameter("page", 1));
+      $this->list->init();
+      $this->page = $r->getParameter("page", 1);
+      $this->r = $r;
+    }
   }
   
  /**

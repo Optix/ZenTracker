@@ -33,7 +33,7 @@ class FrmTopicsTable extends Doctrine_Table
     if (sfContext::getInstance()->getUser()->isAuthenticated())
       $q->addSelect('tu.*')
         ->leftJoin('t.FrmTopicsUsr tu WITH tu.uid = ?', sfContext::getInstance()->getUser()->getAttribute("id"));
-    return $q->execute();
+    return $q;
   }
 
   /**
