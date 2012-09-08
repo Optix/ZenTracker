@@ -4,6 +4,8 @@ class frontendConfiguration extends sfApplicationConfiguration
 {
   public function configure()
   {
+    // Setting right /web folder for shared hosting (eg /public_html)
+    $this->setWebDir(getcwd());
   }
 
   // Selecting the best cache driver, the fastest to the lowest (memcache, apc, sqlite, array(nocache))
