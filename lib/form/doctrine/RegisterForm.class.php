@@ -119,6 +119,14 @@ class RegisterForm extends BaseUsersForm
         $object->setRole("val");
       else
         $object->setRole("mbr");
+
+      // The first registration makes it admin
+      $nbUsers = Doctrine_Query::create()
+        ->select('COUNT(*)')
+        ->from('Users')
+        ->execute(array(), Doctrine::HYDRATE_SINGLE_SCALAR);
+      if ($nbUsers == 0)
+        $object->setRole("adm");
     }
     
     return $object;
