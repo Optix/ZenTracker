@@ -49,11 +49,10 @@ class FrmTopicsTable extends Doctrine_Table
         ->leftJoin('m.Users mu') // Last poster
       ->andWhere('m.created_at = t.updated_at') // Only the last post
       ->orderBy('t.updated_at DESC')
-      ->limit($l)
-      ->useQueryCache(true)->setQueryCacheLifeSpan(3600*24);
+      ->limit($l);
     if (sfContext::getInstance()->getUser()->isAuthenticated())
       $q->addSelect('tu.*')
-        ->leftJoin('t.FrmTopicsUsr tu WITH tu.uid = ?', sfContext::getInstance()->getUser()->getAttribute("id"));
+        ->leftJoin('t.FrmTopicsUsr tu WITH tu.uid = '.sfContext::getInstance()->getUser()->getAttribute("id"));
     return $q->execute(array(), Doctrine::HYDRATE_ARRAY); 
   }
 }
