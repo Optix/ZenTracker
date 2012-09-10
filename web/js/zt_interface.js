@@ -512,28 +512,14 @@ function trim(txt) {
 /* =============================================================================
  * Files management
  * ===========================================================================*/
-function preg_match_all(regex, haystack) {
-   var globalRegex = new RegExp(regex, 'g');
-   var globalMatch = haystack.match(globalRegex);
-   matchArray = new Array();
-   for (var i in globalMatch) {
-      nonGlobalRegex = new RegExp(regex);
-      nonGlobalMatch = globalMatch[i].match(nonGlobalRegex);
-      matchArray.push(nonGlobalMatch[1]);
-   }
-   return matchArray;
-}
-$('textarea[name=ddl[url]]').live('change', function() {
-  var idjHebergPattern = '([0-9A-Z]{12})';
-  /*var ids = idjHebergPattern.exec($(this).val());*/
-  var ids = preg_match_all(idjHebergPattern, $(this).val());
-  $('#fileList').html('');
-  for (var i = 0; i < ids.length; i++) {
-    $.getJSON("http://jheberg.net/api/zentracker.php?id="+ids[i], function(json) {
-      $('#fileList').append('<li><a>'+getImageExtension(getFileExtension(json.filename))
-        +' <strong>'+json.filename+'</strong> ('+getFileSize(json.filesize)+')</a></li>');
-    });
-  }
+$('#uploads_url').live('change', function() {
+  var url = getjHebergApiUrl($(this).val());
+  var container = $('<ul></ul>');
+  $.getJSON(url, function(json) {
+    container.append('<li class="btn">'+getImageExtension(getFileExtension(json.fileName))
+      +' <strong>'+json.fileName+'</strong> ('+getFileSize(json.fileSize)+')</a>');
+  });
+  $(this).parent().append(container);
 });
 function getFileSize (fs) {
   if (fs >= 1073741824) {return round_number(fs / 1073741824, 2) + ' GB';}

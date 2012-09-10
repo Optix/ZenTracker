@@ -36,7 +36,7 @@
     </p>
 
     <p class="stats">
-      <?php if (isset($l['hash'])): ?>
+      <?php if (!empty($l['hash'])): ?>
         <span class="badge"><img src="/images/icones/16x16/utorrent.png" /></span>
       <?php else: ?>
         <span class="badge"><img src="/images/icones/16x16/server.png" /></span>

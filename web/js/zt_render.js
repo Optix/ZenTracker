@@ -212,8 +212,10 @@ function renderUploads(i, l) {
   tpl.attr('href', l.url).attr('data-mode', "normal");
   tpl.children("h3").append(l.title);
   tpl.children('p:eq(0)').text(strip_tags(l.description));
-  if (l.hash.length == 40)
+  if (l.hash)
     tpl.children("p:eq(1)").append('<span class="badge"><img src="/images/icones/16x16/utorrent.png" /></span> ');
+  else
+    tpl.children('p:eq(1)').append('<span class="badge"><img src="/images/icones/16x16/server.png" /></span> ');
   if (l.Users)
     tpl.children("p:eq(1)").append('<span class="badge"><img src="/uploads/avatars/16x16/'+l.Users.avatar+'" /> '+l.Users.username+'</span> ');
   else
@@ -319,7 +321,7 @@ function renderTabs() {
         });
       }
       // If files are included in JSON
-      else if (idx == "files")
+      else if (idx == "files") 
         renderFiles(tabs).appendTo(tab2)
       else if (idx == "peers")
         renderPeers(tabs).appendTo(tab2);
@@ -450,9 +452,9 @@ function renderComments(page_index, jq) {
 }
 
 /**
- * Render filelist
+ * Render peers
  * 
- * @return jQuery <table>
+ * @return jQuery <div>
  */
 function renderPeers(tabs) {
   peerTable = $('<div></div>');
@@ -495,11 +497,48 @@ function renderPeers(tabs) {
 }
 
 /**
+ * Render hosts
+ * 
+ * @return jQuery <div>
+ */
+function renderHosts(tabs) {
+  peerTable = $('<div></div>');
+  var url = getjHebergApiUrl(tabs.data.url);
+  // Calling jHeberg
+  $.getJSON(url, function(json) {
+    // For each file
+    $.each(json.hosts, function(idx, peer) {
+      // Designing a row
+      var peerTpl = $('<div class="entree btn"><div class="thumbnail"><img class="avatar" /></div>'
+        +'<div class="pull-right"></div><h6></h6><div class="progress"><div class="bar"></div></div></div>');
+      peerTpl.css('height', '42px');
+        
+      peerTpl.find('.avatar').attr('src', peer.hostLogo)
+        .parent().css('height', "32px").css('width', '200px').addClass('pull-left');
+      // Nickname
+      peerTpl.children('h6').text(peer.hostName);
+      // Percentage
+      if (peer.hostOnline) {
+        var perc = 100;
+        peerTpl.find('.bar').css("width", perc+'%').text("Online");
+        peerTpl.find('.progress').addClass('progress-success');
+      }
+      peerTpl.prependTo(peerTable);
+    });
+  });
+  return peerTable;
+}
+
+/**
  * Render filelist
  * 
  * @return jQuery <table>
  */
 function renderFiles(tabs) {
+  // If jHeberg link
+  if (tabs.data.url)
+    return renderHosts(tabs);
+
   comTable = $('<table class="table table-striped table-bordered"></table>');
   // For each file
   $.each(tabs.data, function(idx, file) {
@@ -570,4 +609,9 @@ function renderModal(title, data) {
   $('#myModal').css("marginLeft", "-"+($('#myModal').width()/2)+"px");
   $('#myModal').css("marginTop", "-"+($('#myModal').height()/2)+"px");
   
+}
+function getjHebergApiUrl(url) {
+  var urlExp = url.split('/');
+  var id = urlExp[urlExp.length-1];
+  return "http://www.jheberg.net/api/check-link?id="+id;
 }

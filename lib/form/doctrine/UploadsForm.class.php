@@ -44,7 +44,7 @@ class UploadsForm extends BaseUploadsForm
 
     // Loading richtext editor
     $this->widgetSchema['description'] = new sfWidgetFormTextarea(array(), array(
-      "class" => "tinymce", "style" => "height: 400px"));
+      "class" => "tinymce", "style" => "height: 400px;width: 100%"));
 
 
     // NFO file is optional.
@@ -76,13 +76,15 @@ class UploadsForm extends BaseUploadsForm
     // Overriding some fields, we want a file transfer for torrent
     $this->widgetSchema['hash'] = new sfWidgetFormInputFile();
     $this->validatorSchema['hash'] = new sfValidatorFileTorrent(array(
-      'required' => $this->isNew(),
+      'required' => ($this->isNew() && !sfConfig::get("app_bt_allowddl", true)) ? true : false,
       'path' => sfConfig::get('sf_upload_dir').'/torrents',
     ));
+    $this->validatorSchema['url'] = new sfValidatorUrljHeberg();
+    // Resetting labels
     $this->widgetSchema['url']->setLabel('URL');
     $this->widgetSchema['hash']->setLabel('Torrent');
     $this->widgetSchema->setHelp("url", "Paste your jHeberg link here, if you want to use DDL.");
-    if ($this->isNew()) {
+    if ($this->isNew() && !sfConfig::get("app_bt_allowddl", true)) {
       if (sfContext::getInstance()->getRequest()->isSecure())
         $announceUrl = "https://";
       else
@@ -90,7 +92,6 @@ class UploadsForm extends BaseUploadsForm
       $announceUrl .= sfContext::getInstance()->getRequest()->getHost()."/announce";
       $this->widgetSchema->setHelp("hash", "Announce URL : ".$announceUrl);
     }
-      
     else
       $this->widgetSchema->setHelp('hash', "Leave this field if you've already uploaded it.");
 
@@ -106,6 +107,8 @@ class UploadsForm extends BaseUploadsForm
       unset($this->widgetSchema['url'], $this->validatorSchema['url']);
     if (!sfConfig::get('app_bt_allowminlevelmbr', true) && sfContext::getInstance()->getUser()->hasCredential("mbr"))
       unset($this->widgetSchema['minlevel'], $this->validatorSchema['minlevel']);
+    if ($this->getObject()->getUrl() && !$this->getObject()->getHash())
+      unset($this->widgetSchema['hash'], $this->validatorSchema['hash']);
   }
 
   public function updateObject($v = null) {
@@ -116,9 +119,10 @@ class UploadsForm extends BaseUploadsForm
       $object->setUrl($object->getHash());
       // And just setting the hash in the right field
       $object->setHash(HASH);
-      // Storing total size of the upload in bytes
-      $object->setSize(SIZE);
     }
+    
+    // Storing total size of the upload in bytes
+    $object->setSize(SIZE);
 
     // Setting author of the upload
     if ($this->isNew())

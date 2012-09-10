@@ -119,16 +119,17 @@ class partageActions extends sfActions {
     // If not found, send 404 to browser
     //$this->forward404Unless($this->u);
 
+    // Calling edit form
+    $formEdit = new UploadsForm($this->u);
+
     // If editing
     if ($r->isMethod('post')) {
-      // Calling form
-      $f = new UploadsForm($this->u);
       // Binding fields
-      $f->bind($r->getParameter($f->getName()), $r->getFiles($f->getName()));
+      $formEdit->bind($r->getParameter($formEdit->getName()), $r->getFiles($formEdit->getName()));
       // If everything is correct
-      if ($f->isValid()) {
+      if ($formEdit->isValid()) {
         // Save it !
-        $f->save();
+        $formEdit->save();
         // Redirect
         $this->redirect("@uploadcats?c=".$this->u->Categories->getSlug());
       }
@@ -139,7 +140,7 @@ class partageActions extends sfActions {
     $this->ups = Doctrine::getTable('Uploads')->getUploadsByUser($this->u->getAuthor());
     
     // If torrent, getting related peers
-    if ($this->u->getHash())
+    if ($this->u->getHash()) {
       $this->peers = Doctrine_Query::create()
         ->select('p.*, u.username, u.avatar')
         ->from('TorrentsPeers p')
@@ -149,8 +150,15 @@ class partageActions extends sfActions {
         ->orderBy('remain')
         ->execute(array(), Doctrine::HYDRATE_ARRAY);
 
-    // Sending JSON mime type
-    $this->getResponse()->setHttpHeader('Content-type', 'application/json');
+      foreach ($this->peers as $id => $peer) {
+        // Injecting size of upload
+        $this->peers[$id]['uploadsize'] = $this->u->getSize();
+        // Don't send IP&PID to browser, keep it for us 
+        unset($this->peers[$id]['ip'], $this->peers[$id]['pid'], $this->peers[$id]['peer_id']);
+      }
+    }
+
+    
 
     $a['description'] = $this->getTab("Description", "book_open.png", $this->u->getDescription());
     $this->files = $this->u->getFiles($this->u->getUrl());
@@ -161,8 +169,10 @@ class partageActions extends sfActions {
         'u' => $this->u, 'ups' => $this->ups, 'files' => $this->files
     )));
     // Filelist
-    if ($this->files)
+    if (is_array($this->files))
       $a['files'] = $this->getTab("Files", "folders.png", $this->files);
+    else
+      $a['files'] = $this->getTab("Files", "folders.png", array('url' => $this->u->getUrl()));
 
     // If NFO, getting content
     if (is_file("uploads/nfo/".$this->u->getNfo()))
@@ -177,31 +187,29 @@ class partageActions extends sfActions {
       $this->getComponent('messages', 'new', array(
         "form" => $f,
         "submitUrl" => $this->getContext()->getController()->genUrl($this->getModuleName()."/comment")
-      )));
+    )));
 
-    // Peers
-    foreach ($this->peers as $id => $peer) {
-      // Injecting size of upload
-      $this->peers[$id]['uploadsize'] = $this->u->getSize();
-      // Don't send IP&PID to browser, keep it for us 
-      unset($this->peers[$id]['ip'], $this->peers[$id]['pid'], $this->peers[$id]['peer_id']);
-    }
-      
-    $a['peers'] = $this->getTab("Peers", "status_online.png", $this->peers);
+    if (isset($this->peers))
+      $a['peers'] = $this->getTab("Peers", "status_online.png", $this->peers);
 
     // If owner or mod or adm, editing mode
     if ($this->u->getAuthor() == $this->getUser()->getAttribute("id")
     ||  $this->getUser()->hasCredential("adm")
     ||  $this->getUser()->hasCredential("mod")) {
-      $form = new UploadsForm($this->u);
+      $this->formEdit = $formEdit;
       $a['opt'] = $this->getTab("Options", "wrench.png",
-        $this->getPartial($this->getModuleName().'/edit', array("f" => $form)));
+        $this->getPartial($this->getModuleName().'/edit', array("f" => $this->formEdit)));
     }
     
     // Returning content
-    return $this->renderText(json_encode(array(
-      "right" => $a,
-    )));
+    if ($r->isXmlHttpRequest()) {
+      // Sending JSON mime type
+      $this->getResponse()->setHttpHeader('Content-type', 'application/json');
+      // Sending content
+      return $this->renderText(json_encode(array(
+        "right" => $a,
+      )));
+    }
   }
   
 
@@ -272,12 +280,13 @@ class partageActions extends sfActions {
     }
     // If DDL
     else {
-
-      // Record clic
+      // Record click
       $c = new UploadsHits();
       $c->setUid($this->getUser()->getAttribute("id"));
       $c->setUpid($u->getId());
       $c->save();
+
+      $this->redirect($u->getUrl());
     }
     
     return sfView::NONE;

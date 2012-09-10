@@ -12,7 +12,7 @@
   <strong><?=__("Restricted download")?></strong> : 
   <?=__("Uploader allows only users who have at least the level")?> <?=$u->getMinlevel()?>
 </div>
-<?php elseif (!$files): ?>
+<?php elseif (!$u->getUrl()): ?>
 
 <div class="alert alert-error">
   <i class="icon-minus-sign"></i>
