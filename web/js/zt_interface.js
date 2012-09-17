@@ -149,6 +149,7 @@ $(function(){
     leftPage = 1;
     // Calling server
     $.getJSON(href.attr('href'), function(data, textStatus, jqXHR) {
+      console.log(jqXHR);
       // Changing URL
       if (typeof history.pushState != 'undefined') 
         history.pushState(data.module, 'Page', href.attr('href'));
@@ -181,7 +182,7 @@ $(function(){
         // Showing
         $('#droite').fadeTo(200, 1);
       });
-    }).error(function(e) { renderError(e.status+' '+e.statusText);});
+    }).error(function(e) { renderError(e);});
   });
 
   // Left Pagination

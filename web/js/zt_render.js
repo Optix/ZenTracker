@@ -562,7 +562,18 @@ function renderFiles(tabs) {
  */
 function renderError(e) {
   var tpl = $('<div class="alert alert-error"><button class="close" data-dismiss="alert">×</button><i class="icon-exclamation-sign"></i></div>');
-  tpl.hide().append(' '+e).prependTo('#centre').show('blind', {}, 200);
+  if (e.status) {
+    tpl.hide().append(' '+e.status+' '+e.statusText);
+    $('.nav-tabs').append('<li><a href="#debug" data-toggle="tab" style="text-align: center;"><img src="/images/icones/16x16/bug.png" />'
+      +'<span class="visible-desktop">Debug</span></a></li>');
+    var tplDebug = $('<div id="debug" class="tab-pane"><iframe></iframe></div>');
+    tplDebug.children('iframe').css('width', '100%').css('height', '700px').css('border', 'none');
+    $('.tab-content').append(tplDebug);
+    $('#debug').children('iframe').contents().find('html').html(e.responseText);
+  }
+  else
+    tpl.hide().append(' '+e);
+  tpl.prependTo('#centre').show('blind', {}, 200);
 }
 // Notice will be hidden after 5sec
 function renderNotice(e) {
