@@ -34,12 +34,14 @@ class NotificationsTable extends Doctrine_Table
   	$n->setUid(sfContext::getInstance()->getUser()->getAttribute("id"));
   	$n->setReaded(0);
   	$n->setPicture($picture);
-  	$n->setMessage($msg);
+  	$n->setMessage(sfContext::getInstance()->getI18N()->__($msg));
   	$n->setLink("#");
+
     // Limiting extract length
     if (strlen($extract) > 150)
       $extract = substr($extract, 0, 150).'...';
   	$n->setExtract($extract);
+    
     // Returning Notifications object without saving if we've something to override
   	return $n;
   }
