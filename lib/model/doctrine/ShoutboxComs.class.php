@@ -20,7 +20,9 @@ class ShoutboxComs extends BaseShoutboxComs
     Doctrine::getTable('Notifications')->setNotification(
       "has commented your shout.",
       "comment_add.png",
-      $this->getContent())
+      $this->getContent(),
+      "shoutbox/show?id=".$this->Shoutbox->getId()
+    )
     ->setOwner($this->Shoutbox->getAuthor())
     ->save();
 	    

@@ -29,19 +29,19 @@ class NotificationsTable extends Doctrine_Table
   }
 
 
-  public function setNotification($msg, $picture, $extract=null) {
+  public function setNotification($msg, $picture, $extract=null, $link=null) {
   	$n = new Notifications();
   	$n->setUid(sfContext::getInstance()->getUser()->getAttribute("id"));
   	$n->setReaded(0);
   	$n->setPicture($picture);
   	$n->setMessage(sfContext::getInstance()->getI18N()->__($msg));
-  	$n->setLink("#");
+  	$n->setLink(sfContext::getInstance()->getController()->genUrl($link));
 
     // Limiting extract length
     if (strlen($extract) > 150)
       $extract = substr($extract, 0, 150).'...';
   	$n->setExtract($extract);
-    
+
     // Returning Notifications object without saving if we've something to override
   	return $n;
   }
