@@ -12,4 +12,18 @@
  */
 class ShoutboxComs extends BaseShoutboxComs
 {
+  public function save(Doctrine_Connection $con = null) {
+    // Saving comment
+    $q = parent::save();
+
+    // Notify author
+    Doctrine::getTable('Notifications')->setNotification(
+      "has commented your shout.",
+      "comment_add.png",
+      $this->getContent())
+    ->setOwner($this->Shoutbox->getAuthor())
+    ->save();
+	    
+    return $q;
+  }
 }
