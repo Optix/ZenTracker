@@ -23,7 +23,7 @@ class NotificationsTable extends Doctrine_Table
       ->from('Notifications n')
         ->leftJoin('n.Users u')
       ->where("owner = ?", sfContext::getInstance()->getUser()->getAttribute("id"))
-      ->orderBy("id", "desc")
+      ->orderBy("id")
       ->limit(5)
       ->useQueryCache(true)->setQueryCacheLifeSpan(3600*24);
   }
