@@ -12,4 +12,20 @@
  */
 class UploadsComs extends BaseUploadsComs
 {
+  public function save(Doctrine_Connection $con = null) {
+    // Saving comment
+    $q = parent::save();
+
+    // Notify author
+    Doctrine::getTable('Notifications')->setNotification(
+      "has commented your upload.",
+      "comment_add.png",
+      $this->getContent(),
+      "@upload?slug=".$this->Uploads->getSlug()."&c=".$this->Uploads->Categories->getSlug()
+    )
+    ->setOwner($this->Uploads->getAuthor())
+    ->save();
+	    
+    return $q;
+  }
 }
