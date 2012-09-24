@@ -230,4 +230,27 @@ class Users extends BaseUsers
       "ban" => "Banned",
     );
   }
+
+  
+  public function save(Doctrine_Connection $con = null) {
+    $id = $this->getId();
+    // Saving user
+    $q = parent::save();
+
+    // If user is new and invited
+    if (!$id && $this->getParent() != null) {
+      // Notify godfather
+      Doctrine::getTable('Notifications')->setNotification(
+        "is just registered with your invitation.",
+        "user_add.png",
+        null,
+        "@profile?slug=".$this->getSlug()
+      )
+      ->setUid($this->getId())
+      ->setOwner($this->getParent())
+      ->save();
+    }
+
+    return $q;
+  }
 }
