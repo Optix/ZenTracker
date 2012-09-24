@@ -274,6 +274,25 @@ class membresActions extends sfActions
     $this->getResponse()->setContentType('application/json');
     return $this->renderText(json_encode($q));
   }
+
+ /**
+  * Invitations
+  */
+  public function executeInvite(sfWebRequest $r) {
+    // Loading form
+    $f = new InvitesForm();
+    // If we've posted an invitation code
+    if ($r->isMethod('post')) {
+      // Binding values
+      $f->bind($r->getParameter($f->getName()));
+      // If code is correct
+      if ($f->isValid()) {
+        // Saving
+        $f->save();
+        $this->redirect('membres/options');
+      }
+    }
+  }
  
  /**
   * Donations 

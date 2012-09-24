@@ -33,7 +33,7 @@
   <?php endif;?>
 </table>
 
-<form method="post" action="<?=url_for('membres/ip')?>/add" class="form-horizontal">
+<form method="post" action="<?=url_for('membres/invite')?>/add" class="form-horizontal">
   <fieldset>
     <legend>
       <img src="/images/icones/32x32/cup_add.png" width="24" alt="" />
