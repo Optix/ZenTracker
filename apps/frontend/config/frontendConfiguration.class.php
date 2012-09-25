@@ -33,7 +33,7 @@ class frontendConfiguration extends sfApplicationConfiguration
       // Open file
   		$cacheConn = Doctrine_Manager::connection(new PDO("sqlite:%sf_root_dir%/cache/cache.db"));
       // Loading it to driver
-  		$cacheDriver = new Doctrine_Cache_Db(array('connection' => $cacheConn, 'TABLEName' => 'cache'));
+  		$cacheDriver = new Doctrine_Cache_Db(array('connection' => $cacheConn, 'tableName' => 'cache'));
       // If cache table doesn't exists, create it
   		$cacheConn->exec('CREATE TABLE IF NOT EXISTS cache (id VARCHAR(255), data LONGBLOB, expire DATETIME, PRIMARY KEY(id))');
   	}
