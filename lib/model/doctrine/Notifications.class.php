@@ -12,4 +12,11 @@
  */
 class Notifications extends BaseNotifications
 {
+  public function save(Doctrine_Connection $con = null) {
+    // Saving notification only when user doesn't notify himself
+    if ($this->getUid() != $this->getOwner())
+      $q = parent::save();
+	
+    return $q;
+  }
 }
