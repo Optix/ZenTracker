@@ -24,18 +24,50 @@ class FrmMessages extends BaseFrmMessages
 	}
 
   public function save(Doctrine_Connection $con = null) {
+    $id = $this->getId();
     $q = parent::save();
 
+    // If new
     if (!$id) {
+      // Generate URL
+      $internalUrl = "@topic?c=".$this->FrmTopics->FrmForums->FrmCats->getSlug().
+	    "&f=".$this->FrmTopics->FrmForums->getSlug().
+	    "&slug=".$this->FrmTopics->getSlug();
+      $url = sfContext::getInstance()->getController()->genUrl($internalUrl);
+
+      // Storing thread title
+      $title =  $this->FrmTopics->getTitle();
+
+      // Post on shoutbox
       Doctrine::getTable("Shoutbox")->setShout(
-	      array("postedNewFrmReply", "comment_add.png", $this->FrmTopics->getTitle()), 
-	      sfContext::getInstance()->getController()
-	        ->genUrl("@topic?c=".$this->FrmTopics->FrmForums->FrmCats->getSlug().
-	        	"&f=".$this->FrmTopics->FrmForums->getSlug().
-	        	"&slug=".$this->FrmTopics->getSlug())
-	    );
-    }
-	    
+	    array("postedNewFrmReply", "comment_add.png", $title), 
+	    $url
+	  );
+
+	  // Notify contributors
+	  $contributors = $this->getContributors();
+	  foreach ($contributors as $contributor) {
+	    Doctrine::getTable('Notifications')->setNotification(
+	      "has posted a new reply in the forums.",
+	      "comment_add.png",
+	      '<strong>'.$title.'</strong>: '.$this->getContent(),
+	      $internalUrl
+	    )
+	    ->setOwner($contributor['Users']['id'])
+	    ->save();
+	  }
+    }    
     return $q;
+  }
+
+  public function getContributors() {
+  	return Doctrine_Query::create()
+  	  ->select('f.id, u.id')
+  	  ->from('MsgMessages f')
+  	  ->leftJoin('f.Users u')
+  	  ->where('f.tid = ?', $this->FrmTopics->getId())
+  	  ->andWhere('f.deleted_at IS NULL')
+  	  ->groupBy('u.id')
+  	  ->execute(array(), Doctrine::HYDRATE_ARRAY);
   }
 }
