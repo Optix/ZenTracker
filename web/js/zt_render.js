@@ -107,10 +107,13 @@ if (isAuthenticated) {
           // Display in HTML
           renderNotification(n);
           // If Notifications API is allowed
-          if (window.webkitNotifications.checkPermission() == 0) {
+          if (window.webkitNotifications.checkPermission() == 0 && n.readed == false) {
             // Create notif window
             notifWindows[n.id] = window.webkitNotifications.createNotification(
-              n.Users.avatar, n.Users.username+' '+n.message, n.extract);
+              '/uploads/avatars/32x32/'+n.Users.avatar, n.Users.username+' '+n.message, n.extract);
+            notifWindows[n.id].ondisplay = function() { 
+              $.get(scriptname+'main/notifications/readed/'+n.id);
+            };
             // Show
             notifWindows[n.id].show();
           }
