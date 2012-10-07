@@ -31,6 +31,100 @@ function renderUsers(users) {
 }
 
 
+
+/**
+ * NOTIFICATIONS
+ */
+// Notification dropdown
+function renderNotification(n) {
+  var tpl = $('<li>'+
+    '<a>'+
+      '<div class="thumbnail" style="width: 32px">'+
+        '<img />'+
+      '</div>'+
+      '<span class="pull-right label">Readed</span>'+
+      '<strong></strong> <span class="notifMsg"></span>'+
+      '<blockquote style="margin-left: 50px;width: 300px;white-space:normal;text-align: justify;margin-bottom:0">'+
+        '<small class="date"></small>'+
+      '</blockquote>'+
+    '</a>'+
+  '</li>');
+  tpl.children('a').attr('href', n.link).attr('id', 'notif'+n.id).attr('data-notifid', n.id);
+  tpl.find('.date').attr('data-timestamp', n.created_at);
+  tpl.find('strong').text(n.Users.username);
+  tpl.find('.notifMsg').text(n.message);
+  tpl.find('img').attr('src', n.Users.avatar);
+  if (n.readed)
+    tpl.find('.pull-right').text('Readed');
+  else {
+    tpl.find('.pull-right').addClass('label-info').text('New');
+  }
+  tpl.appendTo('#notifications ul');
+}
+
+function checkColorNotifications(n) {
+  if (n == 0) {
+    $('#notifications span.badge').removeClass('badge-error');
+  }
+  else {
+    $('#notifications span.badge').addClass('badge-error');
+  }
+}
+
+
+$(function() {
+  $('#notifications li a').hover(function(){
+    var element = $(this);
+    $(this).children('.label').stop(true).animate({opacity: 0},1000, function(d) {
+      $(this).removeClass('label-info').text('Readed').animate({opacity: 1},200);
+      $.get(scriptname+'main/notifications/readed/'+element.attr('data-notifid'), function(d) {
+        $('#notifications span.badge').text($('#notifications').find('.label-info').length);
+        checkColorNotifications($('#notifications').find('.label-info').length);
+      });
+    });
+  },function() {
+    $(this).children('.label').stop(true).animate({opacity: 1},500);
+  });
+  if (window.webkitNotifications) {
+    $('#notifications').click(function() {
+      if (window.webkitNotifications.checkPermission() != 0) {
+        window.webkitNotifications.requestPermission();
+      }
+    });
+  }
+  $('#notifications span.badge').text($('#notifications').find('.label-info').length);
+  checkColorNotifications($('#notifications').find('.label-info').length);
+});
+
+// Loop to check new notifs
+if (isAuthenticated) {
+  $(function() {
+    setInterval(function() {
+      var lastId = $('#notifications li a:first').attr("data-notifid");
+      $.getJSON(scriptname+'main/notifications/id/'+lastId, function(d) {
+        var notifWindows = new Array();
+        $.each(d, function(i, n) {
+          // Display in HTML
+          renderNotification(n);
+          // If Notifications API is allowed
+          if (window.webkitNotifications.checkPermission() == 0) {
+            // Create notif window
+            notifWindows[n.id] = window.webkitNotifications.createNotification(
+              n.Users.avatar, n.Users.username+' '+n.message, n.extract);
+            // Show
+            notifWindows[n.id].show();
+          }
+        });
+      });
+      $('#notifications span.badge').fadeTo(300, 0.5).text($('#notifications').find('.label-info').length).fadeTo(200, 1);
+      checkColorNotifications($('#notifications').find('.label-info').length);
+    }, 20000);
+  });
+}
+ 
+
+
+
 /**
  * Render shoutbox
  */

@@ -122,15 +122,16 @@
     <ul class="dropdown-menu">
       <?php foreach ($notifications as $notification):?>
       <li>
-        <a href="<?=$notification->getLink()?>">
+        <a href="<?=$notification->getLink()?>" id="notif<?=$notification->getId()?>" data-notifid="<?=$notification->getId()?>">
           <div class="thumbnail" style="width: 32px">
             <img src="<?=$notification->Users->getAvatar(32)?>" />
           </div>
           <?php if ($notification->getReaded() == 0):?>
-            <span class="pull-right label label-info">New</span> 
+            <span class="pull-right label label-info">New</span>
+          <?php else: ?>
+            <span class="pull-right label"><?=__('Readed')?></span>
           <?php endif; ?>
           <strong><?=$notification->Users?></strong> <?=$notification->getMessage()?>
-          
           <blockquote style="margin-left: 50px;width: 300px;white-space:normal;text-align: justify;margin-bottom:0">
             <?=$notification->getExtract()?>
             <small class="date" data-timestamp="<?=strtotime($notification->getCreatedAt())?>">

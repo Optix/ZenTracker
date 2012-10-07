@@ -80,9 +80,31 @@ class mainActions extends sfActions
   * Notifications
   */
   public function executeNotifications(sfWebRequest $r) {
-    $n = Doctrine::getTable("Notifications")
-      ->getNotifications($this->getUser()->getAttribute("id"));
-    return $this->renderText(json_encode($n));
+    // If client has readed a notif
+    if ($r->hasParameter("readed")) {
+      // Getting notif
+      $notif = Doctrine::getTable('Notifications')->find($r->getParameter('readed'));
+      // If no notif found with this ID, send 404
+      $this->forward404Unless($notif);
+      // Set readed
+      $notif->setReaded(1);
+      // Saving changes
+      $notif->save();
+      // Good
+      return $this->renderText("ok");
+    }
+    else {
+      // Preparing request
+      $n = Doctrine::getTable("Notifications")->getNotifications();
+      // Long-polling request
+      if ($r->hasParameter("id") && $r->getParameter('id') != "undefined")
+        $n->andWhere('n.id > ?', $r->getParameter("id"));
+      // Executing
+      $n = $n->execute()->toArray();
+      // Sending to browser with correct MIME
+      $this->getResponse()->setHttpHeader('Content-type','application/json');
+      return $this->renderText(json_encode($n));
+    }
   }
   
   /**
