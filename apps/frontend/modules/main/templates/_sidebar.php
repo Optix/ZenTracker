@@ -109,31 +109,38 @@
       </li>
     </ul>
   </li>
-  <li class="dropdown">
+  <li class="dropdown" id="notifications">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
       <img src="/images/icones/16x16/events.png" class="img" width="16" height="16" alt="" />
-      <?php if ($cntnotif>0):?>
-        <span id="cntnotif" class="badge badge-error"><?=$cntnotif?></span>
+      <?php if (count($notifications)>0):?>
+        <span class="badge badge-error"><?=count($notifications)?></span>
       <?php else: ?>
-        <span id="cntnotif" class="badge">0</span>
+        <span class="badge">0</span>
       <?php endif; ?>
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
+      <?php foreach ($notifications as $notification):?>
       <li>
-        <a href="#">
+        <a href="<?=$notification->getLink()?>" id="notif<?=$notification->getId()?>" data-notifid="<?=$notification->getId()?>">
           <div class="thumbnail" style="width: 32px">
-            <img src="<?=$sf_user->getAttribute("ses")->getAvatar(32)?>" />
+            <img src="<?=$notification->Users->getAvatar(32)?>" />
           </div>
-          <span class="pull-right label label-info">New</span> 
-          <strong>Optix</strong> n'a pas encore mis les notifications.
-          
+          <?php if ($notification->getReaded() == 0):?>
+            <span class="pull-right label label-info">New</span>
+          <?php else: ?>
+            <span class="pull-right label"><?=__('Readed')?></span>
+          <?php endif; ?>
+          <strong><?=$notification->Users?></strong> <?=$notification->getMessage()?>
           <blockquote style="margin-left: 50px;width: 300px;white-space:normal;text-align: justify;margin-bottom:0">
-            Pitié, je ne suis qu'un petit Schtroumpf !
-            <small>Il y a une éternité</small>
+            <?=$notification->getExtract()?>
+            <small class="date" data-timestamp="<?=strtotime($notification->getCreatedAt())?>">
+              <?=$notification->getCreatedAt()?>
+            </small>
            </blockquote>
         </a>
       </li>
+      <?php endforeach; ?>
     </ul>
   </li>
   <li class="dropdown" id="users-connected">

@@ -100,7 +100,7 @@ class RegisterForm extends BaseUsersForm
       // And a rendom signature for BT
       $object->setPid(sha1(time()));
 	  
-	  // Setting password expiration
+	    // Setting password expiration
       $object->setPassexpires(date('Y-m-d H:i:s', time()+3600*24*365));
 
       // If invite, setting parent

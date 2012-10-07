@@ -48,15 +48,8 @@ class mainComponents extends sfComponents
       }
       sfContext::getInstance()->set("usersOnline", json_encode($this->onlineUsers));
       
-      // Nbre de notifs
-      
-      $this->cntnotif = 0;
-      // Nbre de msg
-      /*$this->cntmp = Doctrine_Query::create()->select('COUNT(*) AS cnt')->from("PmParticipants")
-        ->where("readed = 0")->andWhere("mpmid = ?", $this->getUser()->getAttribute("id"))
-        ->useQueryCache(true)->setQueryCacheLifeSpan(3600*24)
-        ->useResultCache(true)->setResultCacheLifeSpan(20)
-        ->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);*/
+      // Notifications
+      $this->notifications = Doctrine::getTable("Notifications")->getNotifications()->execute();
     }
   }
 }

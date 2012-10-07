@@ -12,4 +12,31 @@
  */
 class MsgVotes extends BaseMsgVotes
 {
+  public function replace(Doctrine_Connection $con = null) {
+    // Saving vote
+    $q = parent::replace();
+
+    // Specify context
+    if ($this->getVote() == 1) {
+      $msg = "agreed your message.";
+      $img = "thumb_up";
+    }
+    else {
+      $msg = "disagreed your message.";
+      $img = "thumb_down";
+    }
+
+
+    // Notify author
+    Doctrine::getTable('Notifications')->setNotification(
+      $msg,
+      $img.".png",
+      $this->MsgMessages->getContent(),
+      "@homepage"
+    )
+    ->setOwner($this->MsgMessages->getAuthor())
+    ->save();
+	    
+    return $q;
+  }
 }

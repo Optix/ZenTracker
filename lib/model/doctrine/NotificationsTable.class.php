@@ -17,28 +17,32 @@ class NotificationsTable extends Doctrine_Table
 	    return Doctrine_Core::getTable('Notifications');
 	}
   
-  public function getNotifications($u) {
+  public function getNotifications($limit = 10) {
   	return Doctrine_Query::create()
       ->select('n.*, u.username, u.avatar')
       ->from('Notifications n')
         ->leftJoin('n.Users u')
-      ->where("owner = ?", $u)
-      ->orderBy("id", "desc")
-      ->limit(5)
-      ->useQueryCache(true)->setQueryCacheLifeSpan(3600*24)  
-      ->execute(array(), Doctrine::HYDRATE_ARRAY);
+      ->where("owner = ?", sfContext::getInstance()->getUser()->getAttribute("id"))
+      ->orderBy("id desc")
+      ->limit($limit)
+      ->useQueryCache(true)->setQueryCacheLifeSpan(3600*24);
   }
 
-  public function setNotification($msg, $extract=null) {
+
+  public function setNotification($msg, $picture, $extract=null, $link=null) {
   	$n = new Notifications();
-  	$n->setOwner(1);
-  	$n->setUid(1);
+  	$n->setUid(sfContext::getInstance()->getUser()->getAttribute("id"));
   	$n->setReaded(0);
-  	$n->setPicture("comment.png");
-  	$n->setMessage($msg);
-  	$n->setLink("#");
+  	$n->setPicture($picture);
+  	$n->setMessage(sfContext::getInstance()->getI18N()->__($msg));
+  	$n->setLink(sfContext::getInstance()->getController()->genUrl($link));
+
+    // Limiting extract length
+    if (strlen($extract) > 150)
+      $extract = substr($extract, 0, 150).'...';
   	$n->setExtract($extract);
-  	$n->save();
+
+    // Returning Notifications object without saving if we've something to override
   	return $n;
   }
 }
