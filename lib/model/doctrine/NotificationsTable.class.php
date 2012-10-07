@@ -17,14 +17,14 @@ class NotificationsTable extends Doctrine_Table
 	    return Doctrine_Core::getTable('Notifications');
 	}
   
-  public function getNotifications() {
+  public function getNotifications($limit = 10) {
   	return Doctrine_Query::create()
       ->select('n.*, u.username, u.avatar')
       ->from('Notifications n')
         ->leftJoin('n.Users u')
       ->where("owner = ?", sfContext::getInstance()->getUser()->getAttribute("id"))
       ->orderBy("id desc")
-      ->limit(5)
+      ->limit($limit)
       ->useQueryCache(true)->setQueryCacheLifeSpan(3600*24);
   }
 

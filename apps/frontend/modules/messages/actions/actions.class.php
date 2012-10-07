@@ -82,6 +82,19 @@ class messagesActions extends sfActions
         // Set every people in this MP to unreaded
         Doctrine_Query::create()->update('PmParticipants')->set('readed', 0)
           ->where('mpid = ?', $m->getPmid())->andWhere('mpmid != ?', $this->getUser()->getAttribute("id"))->execute();
+        // Send notif
+        $users = Doctrine::getTable('PmParticipants')->findByMpid($m->getPmid());
+        $pmTopic = $m->PmTopics;
+        foreach ($users as $user) {
+          Doctrine::getTable('Notifications')->setNotification(
+            "sent a new private message.",
+            "email_add.png",
+            '<strong>'.$pmTopic->getTitle().'</strong>',
+            '@pm?slug='.$pmTopic->getSlug()
+          )
+          ->setOwner($user->getMpmid())
+          ->save();
+        }
         // Redirect to topic
         $this->redirect($r->getReferer());
       }
@@ -134,10 +147,20 @@ class messagesActions extends sfActions
       // Save recipients
       $recipients = explode(',', $f->getValue('recipients'));
       foreach ($recipients as $recipient) {
+        // Saving user in conversation
         $rec = new PmParticipants();
         $rec->setMpid($m->getId());
         $rec->setMpmid($recipient);
         $rec->setReaded(0)->setDeleted(0)->replace();
+        // Sending notif
+        Doctrine::getTable('Notifications')->setNotification(
+          "sent a new private message.",
+          "email_add.png",
+          '<strong>'.$m->getTitle().'</strong>',
+          '@pm?slug='.$m->getSlug()
+        )
+        ->setOwner($recipient)
+        ->save();
       }
       // Saving ourselves
       $rec = new PmParticipants();
