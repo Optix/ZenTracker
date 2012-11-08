@@ -34,7 +34,10 @@ class ShoutboxTable extends Doctrine_Table
   }
 
   public function getShouts($offsetId) {
-  	return Doctrine_Query::create()
+  	if ($offsetId == "undefined")
+      $offsetId = 0;
+    
+    return Doctrine_Query::create()
   	  ->select("s.*, u.username, u.avatar, u.slug")
   	  ->from("Shoutbox s")
   	  ->leftJoin('s.Users u')
