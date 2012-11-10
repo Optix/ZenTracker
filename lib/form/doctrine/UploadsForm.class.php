@@ -84,16 +84,13 @@ class UploadsForm extends BaseUploadsForm
     $this->widgetSchema['url']->setLabel('URL');
     $this->widgetSchema['hash']->setLabel('Torrent');
     $this->widgetSchema->setHelp("url", "Paste your jHeberg link here, if you want to use DDL.");
-    if ($this->isNew() && !sfConfig::get("app_bt_allowddl", true)) {
-      if (sfContext::getInstance()->getRequest()->isSecure())
-        $announceUrl = "https://";
-      else
-        $announceUrl = "http://";
-      $announceUrl .= sfContext::getInstance()->getRequest()->getHost()."/announce";
-      $this->widgetSchema->setHelp("hash", "Announce URL : ".$announceUrl);
-    }
+    
+    if (sfContext::getInstance()->getRequest()->isSecure())
+      $announceUrl = "https://";
     else
-      $this->widgetSchema->setHelp('hash', "Leave this field if you've already uploaded it.");
+      $announceUrl = "http://";
+    $announceUrl .= sfContext::getInstance()->getRequest()->getHost()."/announce";
+    $this->widgetSchema->setHelp("hash", "Announce URL : ".$announceUrl);
 
     // Setting some help and labels
     $this->widgetSchema['cat']->setLabel('Category');
