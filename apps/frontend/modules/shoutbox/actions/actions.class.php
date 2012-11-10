@@ -61,11 +61,8 @@ class shoutboxActions extends sfActions
     // If it's an Ajax call, just send "OK"
     if ($r->isXmlHttpRequest())
       return $this->renderText("ok");
-    else {
-      $this->getUser()->setFlash("notice", 
-             $this->getContext()->getI18N()->__("Message deleted."));
-      $this->redirect("@homepage");
-    }
+    $this->getUser()->setFlash("notice", $this->getContext()->getI18N()->__("Message deleted."));
+    $this->redirect("@homepage");
   }
   
  /**
@@ -141,6 +138,13 @@ class shoutboxActions extends sfActions
         "form" => $f,
         "submitUrl" => "#"
     )));
+
+    if ($s->getAuthor() == $this->getUser()->getAttribute("id")
+    || $this->getUser()->hasCredential("adm")
+    || $this->getUser()->hasCredential("mod"))
+      $a['delete'] = $this->getTab('Delete shout', 'delete.png', $this->getPartial($this->getModuleName().'/delete', array(
+        "shtid" => $s->getId()
+      )));
     
     return $this->renderText(json_encode(array(
       "right" => $a

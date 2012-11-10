@@ -43,6 +43,7 @@ class ShoutboxTable extends Doctrine_Table
   	  ->leftJoin('s.Users u')
   	  ->where("s.id > ?", $offsetId)
       ->andWhere("s.created_at > ?", date("Y-m-d", time()-3600*24*3))
+      ->andWhere('s.deleted_at IS NULL')
       ->limit(50)
   	  ->orderBy("id desc")
       ->useQueryCache(true)->setQueryCacheLifeSpan(3600*24)  
