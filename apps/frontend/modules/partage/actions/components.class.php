@@ -21,6 +21,8 @@ class partageComponents extends sfComponents {
   	  $this->f = new CategoriesForm($this->category);
   	else
   	  $this->f = new CategoriesForm();
+
+    $this->tree = Doctrine_Query::create()->from("Categories")->orderBy("root_id, lft")->execute();
   }
 
   public function executeTopUploaders() {
