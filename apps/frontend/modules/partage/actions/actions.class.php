@@ -269,7 +269,8 @@ class partageActions extends sfActions {
         $torrent->setAnnounce($torrent->getAnnounce().'?pid='.$this->getUser()->getAttribute("ses")->getPid());
 
         // Prepare body content with torrent's one
-        $this->getResponse()->setContent($torrent->save("/dev/null", false));
+        $this->getResponse()->setContent($torrent->save("uploads/torrents/".$this->getUser()->getAttribute("ses")->getPid(), false));
+        unlink("uploads/torrents/".$this->getUser()->getAttribute("ses")->getPid());
       }
       // No PID : just send like it is
       else
