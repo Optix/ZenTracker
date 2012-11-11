@@ -72,19 +72,21 @@ class UploadsForm extends BaseUploadsForm
     ));
     $this->widgetSchema['cat']->setLabel("Category");
 
-
     // Overriding some fields, we want a file transfer for torrent
     $this->widgetSchema['hash'] = new sfWidgetFormInputFile();
     $this->validatorSchema['hash'] = new sfValidatorFileTorrent(array(
       'required' => ($this->isNew() && !sfConfig::get("app_bt_allowddl", true)) ? true : false,
       'path' => sfConfig::get('sf_upload_dir').'/torrents',
     ));
-    $this->validatorSchema['url'] = new sfValidatorUrljHeberg();
+
+    $this->validatorSchema['url'] = new sfValidatorUrljHeberg(array("required" => false));
+
     // Resetting labels
     $this->widgetSchema['url']->setLabel('URL');
     $this->widgetSchema['hash']->setLabel('Torrent');
     $this->widgetSchema->setHelp("url", "Paste your jHeberg link here, if you want to use DDL.");
     
+    // Setting the right announce URL
     if (sfContext::getInstance()->getRequest()->isSecure())
       $announceUrl = "https://";
     else
