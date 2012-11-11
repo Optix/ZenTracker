@@ -149,15 +149,15 @@ $(function(){
     leftPage = 1;
     // Calling server
     $.getJSON(href.attr('href'), function(data, textStatus, jqXHR) {
-      console.log(jqXHR);
-      // Changing URL
-      if (typeof history.pushState != 'undefined') 
-        history.pushState(data.module, 'Page', href.attr('href'));
-      
       if (jqXHR.status == 202) {
         window.location.reload(true);
         return false;
       }
+
+      // Changing URL
+      if (typeof history.pushState != 'undefined') 
+        history.pushState(data.module, 'Page', href.attr('href'));
+      
       // For debugging
       console.log(data);
       // Insert blocks on left side
