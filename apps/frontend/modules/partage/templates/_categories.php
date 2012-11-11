@@ -7,6 +7,13 @@
     <?=$f?>
     <div class="form-actions">
       <input type="submit" class="btn btn-primary" />
+      <?php if (!$f->isNew() && $f->getObject()->getNbPosts() == 0):?>
+        <a href="<?=url_for('partage/categorydelete?id='.$f->getObject()->getId().'&token='.$sf_user->getAttribute('token'))?>"
+         class="btn btn-danger">
+          <i class="icon-white icon-trash"></i>
+          <?=__('Delete this category')?>
+        </a>
+      <?php endif; ?>
     </div>
   </fieldset>
 </form>

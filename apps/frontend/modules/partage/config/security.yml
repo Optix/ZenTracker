@@ -4,5 +4,5 @@
 all:
   is_secure: true
 
-supprimercommentaire:
-  credentials: [[adm, mod]]
+categorydelete:
+  credentials: [[adm]]

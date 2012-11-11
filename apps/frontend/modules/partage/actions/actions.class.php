@@ -356,6 +356,23 @@ class partageActions extends sfActions {
     return $this->renderText("");
   }
 
+ /**
+  * Delete a category
+  */
+  public function executeCategorydelete(sfWebRequest $r) {
+    if ($this->getUser()->getAttribute("token") !== $r->getUrlParameter("token"))
+      $this->forward404();
+    
+    $u = Doctrine::getTable("Categories")->find($r->getParameter("id"));
+    $this->forward404Unless($u);
+
+    // Delete from DB
+    $u->delete();
+
+    // Redirect
+    $this->getUser()->setFlash("notice", "Category has been deleted.");
+    $this->redirect("@homepage");
+  }
 
   public function executeComment(sfWebRequest $r) {
     if (!$r->isMethod('post'))
